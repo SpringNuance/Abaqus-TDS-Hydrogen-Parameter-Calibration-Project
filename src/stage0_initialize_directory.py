@@ -22,39 +22,23 @@ def initialize_directory(project, objectives):
     if not os.path.exists(f"{path}/output.log"):
         with open(f"{path}/output.log", 'w') as log_file:
             log_file.write("")
-
-    # For ML model
-    path = f"models/{project}"
-    check_create(path)
-    check_create(f"{path}/LSTM")
-    check_create(f"{path}/LSTM/initial")
-    check_create(f"{path}/transformer")
-    check_create(f"{path}/transformer/initial")
     
     # For results_initial_common
     path = f"results_initial_common/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
 
     # For results_initial_data
     path = f"results_initial_data/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
 
     # For results_iteration_common
     path = f"results_iteration_common/{project}"
     check_create(path)
     check_create(f"{path}/iteration_common")
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
     
     # For results_iteration_data
     path = f"results_iteration_data/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
     
     # For scripts
     path = f"scripts/{project}"
@@ -63,29 +47,17 @@ def initialize_directory(project, objectives):
     # For sims_initial
     path = f"sims_initial/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
 
     # For sims_iteration
     path = f"sims_iteration/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
 
     # For targets
     path = f"targets/{project}"
     check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
 
     # For templates
     path = f"templates/{project}"
-    check_create(path)
-    for objective in objectives:
-        check_create(f"{path}/{objective}")
-
-    # For training data
-    path = f"training_data/{project}"
     check_create(path)
 
     # The project path folder
@@ -93,9 +65,6 @@ def initialize_directory(project, objectives):
     
     # The logging path
     log_path = f"log/{project}"
-
-    # The models path
-    models_path = f"models/{project}"
 
     # The results path
     results_init_data_path = f"results_initial_data/{project}"
@@ -115,15 +84,11 @@ def initialize_directory(project, objectives):
 
     # The templates path
     templates_path = f"templates/{project}"
-    
-    # The data path
-    training_data_path = f"training_data/{project}"
+
 
     all_paths = {
         "project_path": project_path,
-        "training_data_path": training_data_path,
         "log_path": log_path,
-        "models_path": models_path,
         "results_init_data_path": results_init_data_path,
         "results_init_common_path": results_init_common_path,
         "results_iter_data_path": results_iter_data_path,

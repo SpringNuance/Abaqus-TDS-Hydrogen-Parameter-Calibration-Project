@@ -1,223 +1,65 @@
 {
     "project": "CP1000_RD_20C",
-    "objectives": ["CHD2", "CHD4", "NDBR2p5", "NDBR6", "NDBR15", "NDBR40", "SH115"],
-    "num_objectives": 7,
-    "interpolated_displacement_len": 100,
+    "num_measurements": 4,
     "initial_sim_config": 
         {
-            "num_samples": 256,
-            "max_concurrent_samples": 16,
+            "num_samples": 10,
+            "max_concurrent_samples": 1,
             "sampling_method": "SobolSequence",
             "delete_sim": true,
-            "array_job_config": {
-                "job_name": "abaqus_array_small_initial",
-                "nodes": 1,
-                "ntasks": 1,
-                "cpus_per_task": 4,
-                "time": "01:00:00",
-                "partition": "small",
-                "account": "project_2008630",
-                "mail_type": "ALL",
-                "mail_user": "binh.nguyen@aalto.fi"
-            },
-            "input_file_names": {
-                "CHD2": "geometry.inp",
-                "CHD4": "geometry.inp",
-                "NDBR2p5": "geometry.inp",
-                "NDBR6": "geometry.inp",
-                "NDBR15": "geometry.inp",
-                "NDBR40": "geometry.inp",
-                "SH115": "geometry.inp"
-            }
+            "input_file_names": "CP1000_diffusion"
         },
 
     "iteration_sim_config":
         {   
-            "num_synthetic_predictions": 15,
-            "sampling_method": "LHS",
             "delete_sim": true,
-            "array_job_config": {
-                "job_name": "abaqus_array_small_iteration",
-                "nodes": 1,
-                "ntasks": 1,
-                "cpus_per_task": 4,
-                "time": "01:00:00",
-                "partition": "small",
-                "account": "project_2008630",
-                "mail_type": "ALL",
-                "mail_user": "binh.nguyen@aalto.fi"
-            },
-            "input_file_names": {
-                "CHD2": "geometry.inp",
-                "CHD4": "geometry.inp",
-                "NDBR2p5": "geometry.inp",
-                "NDBR6": "geometry.inp",
-                "NDBR15": "geometry.inp",
-                "NDBR40": "geometry.inp",
-                "SH115": "geometry.inp"
-            }
+            "input_file_names": "CP1000_diffusion"
         },
-
-    "exp_yielding_index": {
-        "CHD2": 2800, 
-        "CHD4": 4400,
-        "NDBR2p5": 5100,
-        "NDBR6": 4400,
-        "NDBR15": 4000,
-        "NDBR40": 2400,
-        "SH115": 900
-    },
 
     "stop_loss_config": {
         "stop_value_deviation_percent": {
-            "CHD2": 0.015, 
-            "CHD4": 0.015,
-            "NDBR2p5": 0.015,
-            "NDBR6": 0.015,
-            "NDBR15": 0.015,
-            "NDBR40": 0.015,
-            "SH115": 0.015
+            "measurement_1": 0.01, 
+            "measurement_2": 0.01,
+            "measurement_3": 0.01,
+            "measurement_4": 0.01
         },
-        "stop_num_points_percent": {
-            "CHD2": 0.95, 
-            "CHD4": 0.95,
-            "NDBR2p5": 0.95,
-            "NDBR6": 0.95,
-            "NDBR15": 0.95,
-            "NDBR40": 0.95,
-            "SH115": 0.95
-        },
-        "loss_function": "RMSE"
-    },
-
-    "model_config": {
-        "initial_test_ratio": 0.25,
-        "iteration_test_ratio": 0.0,
-        "divided_index": 19, 
-        "use_referenced_flow_curve": true,
-        "scale_source": 1e-3,
-        "scale_target": 1e-6,
-
-        "LSTM_hyperparams": {
-            "model_name": "best_model.pth",
-            "hidden_size": 256,
-            "num_layers": 3,
-            "bidirectional": true,
-            "use_attention": true,
-            "attention_mechanism": "dot",
-            "dropout": 0.01
-        },
-
-        "LSTM_retraining": {
-            "start_lr": 0.00001,
-            "end_lr": 0.000001,
-            "lr_schedule": "linear",
-            "start_tf": 1.0,
-            "end_tf": 0.1,
-            "tf_schedule": "linear",
-            "dropout": 0.01,
-            "weight_decay": 0.001,
-            "num_epochs": 2000,
-            "batch_size": 64,
-            "max_ratio_differ": 1.0
-        },
-
-        "transformer_hyperparams": {
-            "model_name": "best_model.pth",
-            "d_model": 256,
-            "n_heads": 16,
-            "num_layers": 4,
-            "dim_feedforward": 1024,
-            "activation_name": "relu",
-            "pos_enc_type": "fixed",
-            "encoder_layer_type": "LayerNorm",
-            "dropout": 0.01
-        },
-
-        "transformer_retraining": {
-            "lr": 0.0001,
-            "dropout": 0.01,
-            "weight_decay": 0.001,
-            "num_epochs": 4000,
-            "batch_size": 64
-        },
-
-        "array_job_config": {
-                "job_name": "abaqus_array_gpu_retrain",
-                "nodes": 1,
-                "ntasks": 1,
-                "cpus_per_task": 4,
-                "mem": "8G",
-                "time": "01:00:00",
-                "partition": "gpu",
-                "gres": "gpu:v100:1",
-                "account": "project_2008630",
-                "mail_type": "ALL",
-                "mail_user": "binh.nguyen@aalto.fi"
-        }
+        "loss_function": "MAE"
     },
 
     "param_config": {
-        "c1": {
-            "lower": 0.1, "upper": 0.3, "iter_max_range": 0.016, 
-            "exponent": 1e0, "name": "W", "unit": "dimensionless"
+        "surface_H": {
+            "lower": 5.6, "upper": 10.35,
+            "exponent": 1e0, "name": "surface_H", "unit": "mol/m^3"
         },
-        "c2": {
-            "lower": 1.0, "upper": 1.4, "iter_max_range": 0.032,
-            "exponent": 1e9, "name": "K", "unit": "Pa"
+        "eqplas": {
+            "lower": 0.00, "upper": 0.1,
+            "exponent": 1e0, "name": "eqplas", "unit": "dimless"
         },
-        "c3": {
-            "lower": 0.3, "upper": 0.7, "iter_max_range": 0.032,
-            "exponent": 1e-4, "name": "PEEQ_0", "unit": "dimensionless"
+        "DL": {
+            "lower": 1.0, "upper": 100.0,
+            "exponent": 1e-11, "name": "DL", "unit": "m^2/s"
         },
-        "c4": {
-            "lower": 0.01, "upper": 0.3, "iter_max_range": 0.024,
-            "exponent": 1e0, "name": "n", "unit": "dimensionless"
+        "NT_gb": {
+            "lower": 2.0, "upper": 15.0,
+            "exponent": 1e22, "name": "NT_gb", "unit": "1/m^3"
         },
-        "c5": {
-            "lower": 0.8, "upper": 1.1, "iter_max_range": 0.024,
-            "exponent": 1e9, "name": "sigma_y", "unit": "Pa"
+        "NT_carb": {
+            "lower": 2.0, "upper": 15.0,
+            "exponent": 1e26, "name": "NT_carb", "unit": "1/m^3"
         },
-        "c6": {
-            "lower": 0.01, "upper": 0.3, "iter_max_range": 0.024,
-            "exponent": 1e9, "name": "sigma_sat", "unit": "Pa"
+        "WB_dis": {
+            "lower": -22.0, "upper": -18.0,
+            "exponent": 1e3, "name": "WB_dis", "unit": "Nm/mol"
         },
-        "c7": {
-            "lower": 0.3, "upper": 0.7, "iter_max_range": 0.032,
-            "exponent": 1e2, "name": "b", "unit": "dimensionless"
+        "WB_gb": {
+            "lower": -60.5, "upper": -56.5,
+            "exponent": 1e3, "name": "WB_gb", "unit": "Nm/mol"
+        },
+        "WB_carb": {
+            "lower": -13.0, "upper": -10.0, 
+            "exponent": 1e3, "name": "WB_carb", "unit": "Nm/mol"
         }
-    },
-
-    "param_config_inverse_fitting": {
-        "c1": {
-            "lower": 0.0, "upper": 0.5, "exponent": 1e0, "iter_max_range": 0.02, "name": "W", "unit": "dimensionless"
-        },
-        "c2": {
-            "lower": 0.8, "upper": 1.6, "exponent": 1e9, "iter_max_range": 0.06, "name": "K", "unit": "Pa"
-        },
-        "c3": {
-            "lower": 0.1, "upper": 0.9, "exponent": 1e-4, "iter_max_range": 4, "name": "PEEQ_0", "unit": "dimensionless"
-        },
-        "c4": {
-            "lower": 0.01, "upper": 0.5, "exponent": 1e0, "iter_max_range": 0.02, "name": "n", "unit": "dimensionless"
-        },
-        "c5": {
-            "lower": 0.7, "upper": 1.2, "exponent": 1e9, "iter_max_range": 0.06, "name": "sigma_y", "unit": "Pa"
-        },
-        "c6": {
-            "lower": 0.01, "upper": 0.5, "exponent": 1e9, "iter_max_range": 0.02, "name": "sigma_sat", "unit": "Pa"
-        },
-        "c7": {
-            "lower": 0.1, "upper": 0.9, "exponent": 1e2, "iter_max_range": 0.04, "name": "b", "unit": "dimensionless"
-        }
-    },
-
-    "true_plastic_strain_config": {
-        "strain_start_end": [0.0,  0.001,   0.01,  0.1,   1.00, 3.00],
-        "strain_step":      [  0.0002,  0.001,  0.01,  0.025,  0.05],
-        "hardening_law": "SwiftVoce",
-        "extrapolate_N_first_strain_values": 11
-    }    
+    }
     
 }
 
