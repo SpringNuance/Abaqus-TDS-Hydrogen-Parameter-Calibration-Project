@@ -1,0 +1,28 @@
+numpy
+pandas
+matplotlib
+prettytable
+scikit-learn
+scipy
+torch
+botorch
+openpyxl
+gpytorch
+# tensorflow
+# mlflow
+# optuna
+# cookiecutter
+# pipenv
+# pytest
+# pyspark
+# apache-airflow==2.9.2
+# wandb
+# streamlit
+# dvc
+# kubernetes
+# shap
+# kfp
+# docker
+# docker-compose
+# tensorboard
+# ray

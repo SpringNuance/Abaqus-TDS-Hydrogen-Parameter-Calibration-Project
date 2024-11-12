@@ -1,0 +1,1 @@
+abaqus job=Job-1 input=Job-1.inp cpus=8 -verbose 2 interactive

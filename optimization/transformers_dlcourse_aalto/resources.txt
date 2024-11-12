@@ -1,0 +1,26 @@
+
+Overview of RNN, LSTM and Attention Mechanism
+https://medium.com/swlh/a-simple-overview-of-rnn-lstm-and-attention-mechanism-9e844763d07b
+
+An Implementation of the Encoder-Decoder model with global attention mechanism (Luong et al., 2015).
+This stacked multiple layers of an RNN with a Long Short-Term Memory (LSTM) are used for both 
+the encoder and the decoder. Also, the global attention mechanism and input feeding approach 
+are employed. In the training step, you can use schedule sampling (Bengio et al., 2015) to 
+bridge the gap between training and inference for sequence prediction tasks.
+https://github.com/tm4roon/pytorch-seq2seq/tree/master
+
+Building a LSTM Encoder-Decoder using PyTorch to make Sequence-to-Sequence Predictions
+https://github.com/lkulowski/LSTM_encoder_decoder
+
+Pytorch official tutorial, NLP From Scratch: Translation with a Sequence to Sequence Network and Attention
+https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html
+
+Implementing Seq2Seq Models for Efficient Time Series Forecasting
+https://medium.com/@maxbrenner-ai/implementing-seq2seq-models-for-efficient-time-series-forecasting-88dba1d66187
+
+Aalto Basic RNN Se2Seq (Machine translation): 
+https://github.com/SpringNuance/Deep-Learning/blob/main/04_rnn/1_rnn.ipynb
+
+Transformers model example
+
+
