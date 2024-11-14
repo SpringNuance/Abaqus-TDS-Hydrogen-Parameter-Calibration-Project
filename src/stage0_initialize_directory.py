@@ -9,7 +9,7 @@ import logging
 # Creating necessary directories for the configurations #
 #########################################################
 
-def initialize_directory(project, objectives):
+def initialize_directory(project):
     """
     Initialize the necessary directories for the project.
     """
@@ -107,6 +107,6 @@ if __name__ == "__main__":
         global_configs = json.load(f)
 
     project = global_configs["project"]
-    objectives = global_configs["objectives"]
+    # objectives = global_configs["objectives"]
 
-    initialize_directory(project, objectives)
+    initialize_directory(project)

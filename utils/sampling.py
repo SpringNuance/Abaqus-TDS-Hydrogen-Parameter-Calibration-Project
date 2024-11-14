@@ -116,7 +116,7 @@ def latin_hypercube_sampling(param_config: Dict[str, Dict[str, float]], num_samp
     return sampled_points
 
 def sobol_sequence_sampling(param_config: Dict[str, Dict[str, float]], num_samples: int, 
-                           scramble = True) -> List[Dict[str, float]]:
+                           scramble = False) -> List[Dict[str, float]]:
     """
     Generate parameter samples using a Sobol sequence.
     
@@ -136,13 +136,15 @@ def sobol_sequence_sampling(param_config: Dict[str, Dict[str, float]], num_sampl
         print("Example of num_samples are 16, 32, 64, 128, 256, 512, 1024, etc")
     
     dim = len(param_config)
-    sampler = qmc.Sobol(d=dim, scramble=scramble, seed = 0)
+    sampler = qmc.Sobol(d=dim, scramble=scramble)#, seed = 0)
     bounds = {param: (info["lower"] * info["exponent"], info["upper"] * info["exponent"])
               for param, info in param_config.items()}
     
     raw_samples = sampler.random_base2(m=int(np.log2(num_samples)))
-    return [{param: scale_to_bounds(sample[i], *bounds[param])
+    scaled_samples = [{param: scale_to_bounds(sample[i], *bounds[param])
              for i, param in enumerate(param_config)} for sample in raw_samples]
+    
+    return scaled_samples 
 
 def is_power_of_two(n: int) -> bool:
     """Check if a number is a power of two."""

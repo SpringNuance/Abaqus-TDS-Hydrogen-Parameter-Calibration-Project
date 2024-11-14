@@ -1,0 +1,70 @@
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['CP1000'].materials['Material-1'].userOutputVariables
+mdb.models['CP1000'].materials['Material-1'].depvar.setValues(n=16)
+del mdb.models['CP1000'].loads['Load-1']
+# Save by nguyenb5 on 2024_11_13-17.17.48; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['CP1000'].materials['Material-1'].depvar.setValues(n=18)
+# Save by nguyenb5 on 2024_11_13-17.21.34; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_11_14-13.27.18; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_11_14-14.17.30; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['CP1000'].TimePoint(name='TDS_measurement_time', points=((120.0, ), 
+    (600.0, ), (1800.0, ), (7200.0, )))
+mdb.models['CP1000'].fieldOutputRequests['F-Output-1'].setValues(timePoint=
+    'TDS_measurement_time', variables=('SDV', ))
+# Save by nguyenb5 on 2024_11_14-14.22.24; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_11_14-14.22.57; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['CP1000'].steps['Step-1'].setValues(initialInc=120.0)
+# Save by nguyenb5 on 2024_11_14-14.26.53; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_11_14-14.27.54; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_11_14-15.49.06; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702

@@ -1,0 +1,68 @@
+{
+    "project": "CP1000_RD_20C",
+    "num_measurements": 4,
+    "initial_sim_config": 
+        {
+            "num_samples": 10,
+            "max_concurrent_samples": 1,
+            "sampling_method": "SobolSequence",
+            "delete_sim": true,
+            "input_file_names": "CP1000_diffusion"
+        },
+
+    "iteration_sim_config":
+        {   
+            "delete_sim": true,
+            "input_file_names": "CP1000_diffusion"
+        },
+
+    "stop_loss_config": {
+        "stop_value_deviation_percent": {
+            "measurement_1": 0.01, 
+            "measurement_2": 0.01,
+            "measurement_3": 0.01,
+            "measurement_4": 0.01
+        },
+        "loss_function": "MAE"
+    },
+
+    "param_config": {
+        "surface_H": {
+            "lower": 5.6, "upper": 10.35,
+            "exponent": 1e0, "name": "surface_H", "unit": "mol/m^3"
+        },
+        "eqplas": {
+            "lower": 0.00, "upper": 0.1,
+            "exponent": 1e0, "name": "eqplas", "unit": "dimless"
+        },
+        "DL": {
+            "lower": 1.0, "upper": 100.0,
+            "exponent": 1e-11, "name": "DL", "unit": "m^2/s"
+        },
+        "NT_gb": {
+            "lower": 2.0, "upper": 15.0,
+            "exponent": 1e22, "name": "NT_gb", "unit": "1/m^3"
+        },
+        "NT_carb": {
+            "lower": 2.0, "upper": 15.0,
+            "exponent": 1e26, "name": "NT_carb", "unit": "1/m^3"
+        },
+        "WB_dis": {
+            "lower": -22.0, "upper": -18.0,
+            "exponent": 1e3, "name": "WB_dis", "unit": "Nm/mol"
+        },
+        "WB_gb": {
+            "lower": -60.5, "upper": -56.5,
+            "exponent": 1e3, "name": "WB_gb", "unit": "Nm/mol"
+        },
+        "WB_carb": {
+            "lower": -13.0, "upper": -10.0, 
+            "exponent": 1e3, "name": "WB_carb", "unit": "Nm/mol"
+        }
+    }
+    
+}
+
+
+
+

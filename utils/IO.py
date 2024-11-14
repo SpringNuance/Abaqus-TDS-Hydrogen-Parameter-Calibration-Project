@@ -8,6 +8,7 @@ from prettytable import PrettyTable
 import time
 import os
 import logging
+import copy
 
 def check_create(path):
     """
@@ -116,20 +117,18 @@ def pretty_print_stop_diagnostic(stop_diagnostic, objectives, log_path):
 
     print_log(string_message, log_path)
 
-def read_FD_curve(file_path):
+def read_TDS_measurement(file_path, columns_TDS_measurement):
     """
     Read the force-displacement curve from the .txt file from Abaqus output
     """
-    output_data = np.loadtxt(file_path, skiprows=2)
-    # column 1 is time step
-    # column 2 is displacement
-    # column 3 is force
-    columns = ['X', 'Displacement', 'Force']
-    df = pd.DataFrame(data=output_data, columns=columns)
+    output_data = np.loadtxt(file_path, skiprows=3)
+    
+    df = pd.DataFrame(data=output_data, columns=columns_TDS_measurement)
     # Converting to numpy array
-    displacement = df.iloc[:, 1].to_numpy()
-    force = df.iloc[:, 2].to_numpy()
-    return displacement, force
+    # We would like to round the first column (time) to integers
+    # round it to 0 decimal places
+    df.iloc[:, 0] = df.iloc[:, 0].round(0).astype(int)
+    return df
 
 def create_parameter_file(file_path, params_dict, create_excel=True, create_csv=True):
     """
@@ -197,39 +196,252 @@ def create_FD_curve_file(file_path, displacement, force,
         df.to_excel(f"{file_path}/FD_curve.xlsx", index=False)
     if create_csv:
         df.to_csv(f"{file_path}/FD_curve.csv", index=False)
-        
-def replace_flow_curve(file_path, true_plastic_strain, true_stress):
-    """
-    Replace the flow curve data in the inp file of Abaqus
-    """
-    with open(file_path, 'r') as abaqus_inp:
-        abaqus_inp_content = abaqus_inp.readlines()
-    # Locate the section containing the stress-strain data
-    start_line = None
     
-    search_last_lines = 1000
-    for i, line in enumerate(abaqus_inp_content[-search_last_lines:]):
-        if '*Plastic' in line:
-            start_line = len(abaqus_inp_content) - search_last_lines + i + 1
+def return_description_properties(properties_path_excel):
+    description_properties_dict = {
+        "mechanical_properties": {},
+        "hydrogen_diffusion_properties": {},
+    }
 
-    if start_line is None:
-        raise ValueError('Could not find the *Plastic data section')
+    # Loading the properties file
+    # Cast to string to avoid issues with the mixed types in the excel file
+    properties_df = pd.read_excel(properties_path_excel, dtype=str)
+
+    # find number of rows
+    # max_nprops = properties_df.shape[0]
+
+    mechanical_descriptions_list = properties_df["mechanical_descriptions"].dropna().tolist()
+    mechanical_keys_list = properties_df["mechanical_keys"].dropna().tolist()
+    mechanical_values_list = properties_df["mechanical_values"].dropna().tolist()
+
+    hydrogen_diffusion_descriptions_list = properties_df["hydrogen_diffusion_descriptions"].dropna().tolist()
+    hydrogen_diffusion_keys_list = properties_df["hydrogen_diffusion_keys"].dropna().tolist()
+    hydrogen_diffusion_values_list = properties_df["hydrogen_diffusion_values"].dropna().tolist()
+
+    ### Now we add the values to the dictionary
+
+    for i in range(len(mechanical_keys_list)):
+        description_properties_dict["mechanical_properties"][mechanical_keys_list[i]] = {
+            "value": mechanical_values_list[i],
+            "description": mechanical_descriptions_list[i]
+        }
+    for i in range(len(hydrogen_diffusion_keys_list)):
+        description_properties_dict["hydrogen_diffusion_properties"][hydrogen_diffusion_keys_list[i]] = {
+            "value": hydrogen_diffusion_values_list[i],
+            "description": hydrogen_diffusion_descriptions_list[i]
+        }
+    return description_properties_dict
+
+def return_UMAT_property(description_properties_dict): 
+    mechanical_descriptions_and_values = list(description_properties_dict["mechanical_properties"].values())
+    mechanical_values_list = [mechanical_descriptions_and_values[i]["value"] 
+                                for i in range(len(mechanical_descriptions_and_values))]
+    mechanical_description_list = [mechanical_descriptions_and_values[i]["description"]
+                                for i in range(len(mechanical_descriptions_and_values))]
+
+    # Abaqus needs to define 8 properties each line
+    mech_prop_num_lines = int(np.ceil(len(mechanical_values_list)/8))
+    mech_prop_num_properties = int(mech_prop_num_lines*8)
+
+    total_UMAT_num_properties = mech_prop_num_properties 
+
+    UMAT_property = []
     
-    end_line = None
-    for i, line in enumerate(abaqus_inp_content[start_line:]):
-        if line.startswith('*'):
-            end_line = start_line + i
-            break
+    # The last line would be padded with 0.0 and their corresponding description would be "none"
+    # If the number of properties is not a multiple of 8
 
-    # Modify the stress-strain data
-    flow_curve_data = zip(true_stress, true_plastic_strain)
-    # Update the .inp file
-    new_lines = []
-    new_lines.extend(abaqus_inp_content[:start_line])
-    new_lines.extend([f'{stress},{strain}\n' for stress, strain in flow_curve_data])
-    new_lines.extend(abaqus_inp_content[end_line:])
+    # For mechanical properties
+    UMAT_property.append("**")
+    UMAT_property.append("** =====================")
+    UMAT_property.append("**")
+    UMAT_property.append("** MECHANICAL PROPERTIES")
+    UMAT_property.append("**")
+    
+    for line_index in range(mech_prop_num_lines):
+        if line_index != mech_prop_num_lines - 1:
+            subset_properties = mechanical_values_list[line_index*8:(line_index+1)*8]
+            subset_description = mechanical_description_list[line_index*8:(line_index+1)*8]
+            UMAT_property.append(", ".join(subset_properties))
+            UMAT_property.append("** " + ", ".join(subset_description[0:4]))
+            UMAT_property.append("** " + ", ".join(subset_description[4:8]))
+        else:
+            subset_properties = mechanical_values_list[line_index*8:] + ["0.0"]*(8-len(mechanical_values_list[line_index*8:]))
+            subset_description = mechanical_description_list[line_index*8:] + ["none"]*(8-len(mechanical_description_list[line_index*8:]))
+            UMAT_property.append(", ".join(subset_properties))
+            UMAT_property.append("** " + ", ".join(subset_description[0:4]))
+            UMAT_property.append("** " + ", ".join(subset_description[4:8]))
+    
+    UMAT_property.append("**")
+    UMAT_property.append("*******************************************************")
 
-    # Write the updated .inp file
-    with open(file_path, 'w') as file:
-        file.writelines(new_lines)
-    #time.sleep(180)
+    return UMAT_property, total_UMAT_num_properties
+
+
+def return_UMATHT_property(description_properties_dict): 
+    
+    hydrogen_diffusion_descriptions_and_values = list(description_properties_dict["hydrogen_diffusion_properties"].values())
+    hydrogen_diffusion_values_list = [hydrogen_diffusion_descriptions_and_values[i]["value"]
+                                for i in range(len(hydrogen_diffusion_descriptions_and_values))]
+    hydrogen_diffusion_description_list = [hydrogen_diffusion_descriptions_and_values[i]["description"]
+                                for i in range(len(hydrogen_diffusion_descriptions_and_values))]
+    # Abaqus needs to define 8 properties each line
+    hydrogen_diffusion_prop_num_lines = int(np.ceil(len(hydrogen_diffusion_values_list)/8))
+    hydrogen_diffusion_prop_num_properties = int(hydrogen_diffusion_prop_num_lines*8)
+
+    total_UMATHT_num_properties = hydrogen_diffusion_prop_num_properties 
+    
+    UMATHT_property = []
+    
+    # The last line would be padded with 0.0 and their corresponding description would be "none"
+    # If the number of properties is not a multiple of 8
+
+    # For hydrogen diffusion properties
+    UMATHT_property.append("**")
+    UMATHT_property.append("** =============================")
+    UMATHT_property.append("**")
+    UMATHT_property.append("** HYDROGEN DIFFUSION PROPERTIES")
+    UMATHT_property.append("**")
+
+    for line_index in range(hydrogen_diffusion_prop_num_lines):
+        if line_index != hydrogen_diffusion_prop_num_lines - 1:
+            subset_properties = hydrogen_diffusion_values_list[line_index*8:(line_index+1)*8]
+            subset_description = hydrogen_diffusion_description_list[line_index*8:(line_index+1)*8]
+            UMATHT_property.append(", ".join(subset_properties))
+            UMATHT_property.append("** " + ", ".join(subset_description[0:4]))
+            UMATHT_property.append("** " + ", ".join(subset_description[4:8]))
+        else:
+            subset_properties = hydrogen_diffusion_values_list[line_index*8:] + ["0.0"]*(8-len(hydrogen_diffusion_values_list[line_index*8:]))
+            subset_description = hydrogen_diffusion_description_list[line_index*8:] + ["none"]*(8-len(hydrogen_diffusion_description_list[line_index*8:]))
+            UMATHT_property.append(", ".join(subset_properties))
+            UMATHT_property.append("** " + ", ".join(subset_description[0:4]))
+            UMATHT_property.append("** " + ", ".join(subset_description[4:8]))
+
+    UMATHT_property.append("**")
+    UMATHT_property.append("*******************************************************")
+
+    return UMATHT_property, total_UMATHT_num_properties
+
+
+def return_depvar(depvar_excel_path):
+
+    depvar_df = pd.read_excel(depvar_excel_path, dtype=str)
+    nstatev = len(depvar_df)
+    #print("The number of state variables is: ", nstatev)
+
+    DEPVAR = [
+        "*Depvar       ",
+        f"  {nstatev},      ",  
+    ]
+
+    depvar_index = depvar_df["depvar_index"].tolist()
+    depvar_name = depvar_df["depvar_name"].tolist()
+
+    for i in range(1, nstatev + 1):
+        index = depvar_index[i-1]
+        name = depvar_name[i-1]
+        DEPVAR.append(f"{index}, AR{index}_{name}, AR{index}_{name}")
+
+
+    return DEPVAR, nstatev
+
+def replace_TDS_props(file_path, UMAT_PROPERTY, total_UMAT_num_properties, 
+                                UMATHT_PROPERTY, total_UMATHT_num_properties):
+                               # DEPVAR, nstatev):
+    # Open the input file
+    with open(file_path, 'r') as fid:
+        flines = fid.readlines()
+
+    # Process the lines
+    flines = [line.strip() for line in flines]
+    flines_new = copy.deepcopy(flines)
+
+    # Now, we would reconstruct the input file as follows
+
+    # 1. Replace the UMAT properties
+
+    # Replacing UMAT properties
+    umat_index = [i for i, line in enumerate(flines_new) if '*USER MATERIAL' in line.upper() and 'MECHANICAL' in line.upper()][0]
+    
+    # Find where the current UMAT section ends (by finding the next line that starts with '*')
+    next_star_line_umat = next(i for i in range(umat_index + 1, len(flines_new)) if flines_new[i].startswith('*'))
+    
+    # Replace the number of constants in the *User Material line
+    flines_new[umat_index] = f"*User Material, constants={total_UMAT_num_properties}, type=MECHANICAL"
+    
+    # Replace the content under UMAT
+    flines_new = flines_new[:umat_index + 1] + UMAT_PROPERTY + flines_new[next_star_line_umat:]
+
+    # 2. Replace the UMATHT properties
+
+    # Replacing UMATHT properties
+    umatht_index = [i for i, line in enumerate(flines_new) if '*USER MATERIAL' in line.upper() and 'THERMAL' in line.upper()][0]
+    
+    # Find where the current UMATHT section ends (by finding the next line that starts with '*')
+    next_star_line_umatht = next(i for i in range(umatht_index + 1, len(flines_new)) if flines_new[i].startswith('*'))
+    
+    # Replace the number of constants in the *User Material line
+    flines_new[umatht_index] = f"*User Material, constants={total_UMATHT_num_properties}, type=THERMAL"
+    
+    # Replace the content under UMATHT
+    flines_new = flines_new[:umatht_index + 1] + UMATHT_PROPERTY + flines_new[next_star_line_umatht:]
+
+    # 3. We would also modify the *Depvar section to include the key descriptions
+    
+    # Replacing Depvar section
+
+    # # find the index of the *Depvar section
+    # depvar_index = [i for i, line in enumerate(flines_new) if '*DEPVAR' in line.upper()][0]
+
+    # #print("The initial conditions are: ", INITIAL_CONDITIONS)
+
+    # flines_new = flines_new[:depvar_index] + DEPVAR + flines_new[depvar_index+2:]
+
+    with open(file_path, 'w') as fid:
+        for line in flines_new:
+            fid.write(line + "\n")
+
+
+def replace_surface_H(file_path, surface_H):
+    # Open the input file
+    with open(file_path, 'r') as fid:
+        flines = fid.readlines()
+
+    # Now, in the input file, there will be a section that looks like this
+
+    # ** Name: <some name> Type: Temperature
+    # *Boundary, amplitude=<some name>
+    # <some name>, 11, 11, <surface_H value here>
+
+    # Process the lines
+    flines = [line.strip() for line in flines]
+    flines_new = copy.deepcopy(flines)
+
+    # Create a deep copy to preserve the original lines
+    flines_new = copy.deepcopy(flines)
+
+    # Define a flag to indicate if the target line was found and modified
+    modified = False
+
+    # Only process the last 300 lines in the loop
+    start_index = max(0, len(flines) - 300)  # Calculate starting index to ensure it doesn't go negative
+    for i in range(start_index, len(flines)):
+        # Check if the line matches the pattern we're looking for
+        if flines[i].startswith("** Name:") and "Type: Temperature" in flines[i]:
+            # The next line after "** Name:" should be "*Boundary" and the following one should have the surface_H value
+            if i + 2 < len(flines):  # Ensure we don't go out of bounds
+                parts = flines[i + 2].split(",")
+                if len(parts) >= 4:  # Ensure the line is long enough to contain a surface_H value
+                    parts[-1] = str(surface_H)  # Replace the last part with the new surface_H value
+                    flines_new[i + 2] = ", ".join(parts)
+                    modified = True
+                    break  # Stop after finding and modifying the first occurrence
+
+    # Only write changes if modified
+    if modified:
+        # Write the modified lines back to the file
+        with open(file_path, 'w') as fid:
+            for line in flines_new:
+                fid.write(line + "\n")
+        # print("surface_H value updated successfully.")
+    else:
+        print("surface_H value not found in the last 300 lines of the file.")

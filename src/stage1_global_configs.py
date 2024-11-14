@@ -27,10 +27,11 @@ def main_global_configs(chosen_project_path=None):
             global_configs = json.load(f)
 
     project = global_configs["project"]
-    objectives = global_configs["objectives"]
+    # objectives = global_configs["objectives"]
+    num_measurements = global_configs["num_measurements"]
     
     # Initialize the directories
-    all_paths = initialize_directory(project, objectives)
+    all_paths = initialize_directory(project)
     
     ###########################
     # Information declaration #
@@ -63,9 +64,9 @@ def main_global_configs(chosen_project_path=None):
     log_table = PrettyTable()
 
     log_table.field_names = ["Global Configs", "User choice"]
-    log_table.add_row(["PROJECT", project])
-    objective_string = ", ".join(objectives)
-    log_table.add_row(["OBJECTIVES", objective_string])
+    #log_table.add_row(["PROJECT", project])
+    #objective_string = ", ".join(objectives)
+    #log_table.add_row(["OBJECTIVES", objective_string])
     
     for path in all_paths:
         log_table.add_row([path.upper(), all_paths[path]])
