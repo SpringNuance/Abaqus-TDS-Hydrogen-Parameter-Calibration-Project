@@ -19,7 +19,7 @@ def main_prepare_initial_sim_data(global_configs):
     # --------------------------------------------- #
     
     all_paths = global_configs["all_paths"]
-    objectives = global_configs["objectives"]
+    num_measurements = global_configs["num_measurements"]
     
     results_init_common_path = all_paths["results_init_common_path"]
     targets_path = all_paths["targets_path"]

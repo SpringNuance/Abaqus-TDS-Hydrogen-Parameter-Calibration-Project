@@ -60,6 +60,14 @@ def initialize_directory(project):
     path = f"templates/{project}"
     check_create(path)
 
+    # For models
+    path = f"models/{project}"
+    check_create(path)
+
+    # For training_data
+    path = f"training_data/{project}"
+    check_create(path)
+
     # The project path folder
     project_path = os.getcwd()
     
@@ -85,6 +93,12 @@ def initialize_directory(project):
     # The templates path
     templates_path = f"templates/{project}"
 
+    # The models path
+    models_path = f"models/{project}"
+
+    # The training data path
+    training_data_path = f"training_data/{project}"
+
 
     all_paths = {
         "project_path": project_path,
@@ -97,7 +111,9 @@ def initialize_directory(project):
         "sims_init_path": sims_init_path,
         "sims_iter_path": sims_iter_path,
         "targets_path": targets_path,
-        "templates_path": templates_path
+        "templates_path": templates_path,
+        "models_path": models_path,
+        "training_data_path": training_data_path
     }
     return all_paths
 

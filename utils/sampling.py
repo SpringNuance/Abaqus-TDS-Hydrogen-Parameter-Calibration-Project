@@ -153,3 +153,57 @@ def is_power_of_two(n: int) -> bool:
 def scale_to_bounds(value: float, lower: float, upper: float) -> float:
     """Scale a [0, 1] range value to [lower, upper]."""
     return value * (upper - lower) + lower
+
+# Define a function to denormalize a point
+def denormalize_point(normalized_point, param_config):
+    """
+    normalized_point: np.array of shape (num_params)
+    param_config: dictionary of parameter configurations from .json file in configs folder
+    """
+    denormalized_point = []
+    for i, param_key in enumerate(param_config.keys()):
+        param_multiplier = param_config[param_key]["exponent"]
+        param_min = param_config[param_key]["lower"] * param_multiplier
+        param_max = param_config[param_key]["upper"] * param_multiplier
+        # Denormalize each value
+        denormalized_value = normalized_point[i] * (param_max - param_min) + param_min
+        denormalized_point.append(denormalized_value)
+    return np.array(denormalized_point)
+
+def denormalize_points(normalized_points, param_config):
+    """
+    normalized_points: np.array of shape (num_points, num_params)
+    param_config: dictionary of parameter configurations from .json file in configs folder
+    """
+    denormalized_points = []
+    for i in range(normalized_points.shape[0]):
+        denormalized_point = denormalize_point(normalized_points[i], param_config)
+        denormalized_points.append(denormalized_point)
+    return np.array(denormalized_points)
+
+# Define a function to normalize a point
+def normalize_point(denormalized_point, param_config):
+    """
+    denormalized_point: np.array of shape (num_params)
+    param_config: dictionary of parameter configurations from .json file in configs folder
+    """
+    normalized_point = []
+    for i, param_key in enumerate(param_config.keys()):
+        param_multiplier = param_config[param_key]["exponent"]
+        param_min = param_config[param_key]["lower"] * param_multiplier
+        param_max = param_config[param_key]["upper"] * param_multiplier
+        # Normalize each value
+        normalized_value = (denormalized_point[i] - param_min) / (param_max - param_min)
+        normalized_point.append(normalized_value)
+    return np.array(normalized_point)
+
+def normalize_points(denormalized_points, param_config):
+    """
+    denormalized_points: np.array of shape (num_points, num_params)
+    param_config: dictionary of parameter configurations from .json file in configs folder
+    """
+    normalized_points = []
+    for i in range(denormalized_points.shape[0]):
+        normalized_point = normalize_point(denormalized_points[i], param_config)
+        normalized_points.append(normalized_point)
+    return np.array(normalized_points)

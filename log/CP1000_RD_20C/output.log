@@ -6956,3 +6956,295 @@ The root path of your project folder is
 
 c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
 
+
+START RUNNING FROM *** 2024-11-15 13:18:29 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+
+START RUNNING FROM *** 2024-11-15 13:55:51 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+
+START RUNNING FROM *** 2024-11-15 13:56:04 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+c:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+
+START RUNNING FROM *** 2024-11-15 15:08:42 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 16
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 16
+Max concurrent samples: 2
+Number of batches: 8
+=======================================================================
+TDS_measurements.npy already exist.
+
+START RUNNING FROM *** 2024-11-15 15:08:54 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 16
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 16
+Max concurrent samples: 2
+Number of batches: 8
+=======================================================================
+TDS_measurements.npy already exist.
+
+START RUNNING FROM *** 2024-11-15 15:10:29 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
+|       MODELS_PATH        |                              models/CP1000_RD_20C                             |
+|    TRAINING_DATA_PATH    |                          training_data/CP1000_RD_20C                          |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 16
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 16
+Max concurrent samples: 2
+Number of batches: 8
+=======================================================================
+TDS_measurements.npy already exist.
+
+============================================
+= Stage 4: Prepare initial simulation data =
+============================================
+
