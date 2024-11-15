@@ -4,6 +4,16 @@ from scipy.integrate import simpson
 from scipy.interpolate import interp1d
 import time
 
+def calculate_loss(sim_measurements, target_measurements, loss_function):
+    if loss_function == "MAE":
+        return np.mean(abs(sim_measurements - target_measurements))
+    elif loss_function == "MSE":
+        return np.mean((sim_measurements - target_measurements)**2)
+    elif loss_function == "RMSE":
+        return np.sqrt(np.mean((sim_measurements - target_measurements)**2))
+    else:
+        raise ValueError(f"Loss function {loss_function} not supported. Please choose from 'MAE', 'MSE'")
+
 def loss_flow_curve_MSE(true_plastic_strain, interpolated_target_stress, interpolated_sim_stress):
     MSE_loss = np.sqrt(np.mean((interpolated_target_stress - interpolated_sim_stress)**2))
     return MSE_loss

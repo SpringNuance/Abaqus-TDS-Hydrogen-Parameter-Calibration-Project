@@ -6,10 +6,9 @@
 import src.stage1_global_configs as stage1_global_configs 
 import src.stage2_prepare_common_data as stage2_prepare_common_data
 import src.stage3_run_initial_sims as stage3_run_initial_sims
-import src.stage4_prepare_initial_sim_data as stage4_prepare_initial_sim_data
-import src.stage5_load_seq2seq_model as stage5_load_seq2seq_model
-import src.stage6_prepare_iteration_sim_data as stage6_prepare_iteration_sim_data
-import src.stage7_run_iteration_sims as stage7_run_iteration_sims
+import src.stage4_prepare_sim_data as stage4_prepare_sim_data
+import src.stage5_train_GP_model as stage5_train_GP_model
+import src.stage6_run_iteration_sims as stage6_run_iteration_sims
 
 from configs.chosen_project import chosen_project_path_default
 import argparse
@@ -59,43 +58,34 @@ def main_pipeline(stage, chosen_project_path):
 
     if stage >= 4:
         
-        stage4_outputs = stage4_prepare_initial_sim_data.main_prepare_initial_sim_data(global_configs) 
+        stage4_outputs = stage4_prepare_sim_data.main_prepare_sim_data(global_configs, stage2_outputs) 
         
-    # ================================= #
-    # Stage 5: Train Seq2Seq ML models  #
-    # ================================= #
+    # ======================================= #
+    # Stage 5: Train Gaussian Process models  #
+    # ======================================= #
 
     if stage >= 5:
 
-        stage5_outputs = stage5_load_seq2seq_model.main_load_seq2seq_model(global_configs)
-
-    # ============================================ #
-    # Stage 6: Prepare iteration simulation data   #
-    # ============================================ #
-
-    if stage >= 6:
-
-        stage6_outputs = stage6_prepare_iteration_sim_data.main_prepare_iteration_sim_data(global_configs)
+        stage5_outputs = stage5_train_GP_model.main_train_GP_model(global_configs, stage4_outputs)
 
     # ================================== #
     # Stage 7: Run iterative simulations #
     # ================================== #
     
-    if stage >= 7:
+    if stage >= 6:
 
-        stage7_run_iteration_sims.main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
-                                                          stage4_outputs, stage5_outputs, stage6_outputs)
+        stage6_run_iteration_sims.main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
+                                                          stage4_outputs, stage5_outputs)
      
 def parse_args():
     stages_name = ["Stage 1: Initialize directories and load global configs",
                    "Stage 2: Prepare common data",
                    "Stage 3: Run initial simulations",
-                   "Stage 4: Prepare initial simulation data",
-                   "Stage 5: Train Seq2Seq models",
-                   "Stage 6: Prepare iteration simulation data",
-                   "Stage 7: Run iteration simulations"]
+                   "Stage 4: Prepare simulation data",
+                   "Stage 5: Train GP models",
+                   "Stage 6: Run iteration simulations"]
     
-    parser = argparse.ArgumentParser(description="Abaqus Hardening Flow Curve Seq2Seq Calibration")
+    parser = argparse.ArgumentParser(description="Abaqus TDS Hydrogen Bayesian Optimization")
     parser.add_argument("--stage", type=int, choices=range(1, 8), default=7, 
                         help=" || ".join(stages_name))
     parser.add_argument("--config-path", type=str, default=None, 
