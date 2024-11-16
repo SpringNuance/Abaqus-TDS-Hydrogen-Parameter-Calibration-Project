@@ -6,203 +6,113 @@ import numpy as np
 import time
 import os
 import sys
+import math
+
+from botorch.models import SingleTaskGP
+from gpytorch.constraints import GreaterThan
+from botorch.models.transforms import Normalize
+from gpytorch.kernels import RBFKernel, ScaleKernel, ConstantKernel, MaternKernel
+from gpytorch.mlls import ExactMarginalLogLikelihood
+from torch.optim import Adam
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from optimization.LSTM_helper import *
 
-# LSTM Encoder-Decoder Model with Bidirection and Attention mechanism
+# use a GPU if available
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+dtype = torch.float64
 
-class LSTMModel(nn.Module):
-    def __init__(self, feature_size, label_size,
-                       source_len, target_len,
-                       hidden_size, num_layers,
-                       dropout=0.01,
-                       bidirectional=False, 
-                       use_attention=False,
-                       attention_mechanism='dot',
-                       ):
-        # Possible attention mechanisms: dot, general, concat
-        # We dont use multihead attention, it is computationally expensive
-        # That is reserved for Transformer model
-        
-        super(LSTMModel, self).__init__()
-        
-        self.feature_size = feature_size
-        self.label_size = label_size
-        self.source_len = source_len
-        self.target_len = target_len
-        self.hidden_size = hidden_size
-        self.num_layers = num_layers
-        self.bidirectional = bidirectional
-        self.use_attention = use_attention
+class GaussianProcess():
+    def __init__(self, chosen_kernel, kernel_params):
 
-        # Encoder LSTM (can be unidirectional or bidirectional)
-        self.encoder_lstm = nn.LSTM(input_size=feature_size, hidden_size=hidden_size, 
-                                    num_layers=num_layers, batch_first=True, 
-                                    dropout=dropout,
-                                    bidirectional=bidirectional)
-
-        # Decoder LSTM (must only be unidirectional)
-        self.decoder_lstm = nn.LSTM(input_size=label_size, hidden_size=hidden_size * 2 if bidirectional else hidden_size, 
-                                    num_layers=num_layers, batch_first=True, 
-                                    dropout=dropout,
-                                    bidirectional=False)
-        
-        # The final linear layer that maps decoded LSTM hidden size to the label size
-        self.fc_final = nn.Linear(hidden_size * 2 if bidirectional else hidden_size, label_size)
-        
-        # Activation function to enforce positive increments
-        self.relu = nn.ReLU()
-        
-        if self.use_attention:
-            self.attention = Attention(hidden_size * 2 if bidirectional else hidden_size,
-                                       method=attention_mechanism)
-            self.layer_norm = nn.LayerNorm(hidden_size * (2 if self.bidirectional else 1))
-
-    def forward(self, source_seq, target_seq=None, teacher_forcing_prob=0.0):
-        """
-            Param: source_seq of shape [batch_size, source_len, feature_size]
-            Return: target_seq of shape [batch_size, target_len, label_size]
-        """
-        # Initializing h_0 and c_0 for the encoder LSTM
-        batch_size = source_seq.size(0)
-
-        h_0_encoder = torch.zeros(self.num_layers * (2 if self.bidirectional else 1), 
-                        batch_size, self.hidden_size).to(source_seq.device)
-        c_0_encoder = torch.zeros(self.num_layers * (2 if self.bidirectional else 1), 
-                        batch_size, self.hidden_size).to(source_seq.device)
-        
-        # if bidirectional and num_layers = 2, then h_0_encoder shape [4, batch_size, hidden_size]
-        # h_0_encoder[0] is the forward hidden state of the first layer
-        # h_0_encoder[1] is the backward hidden state of the first layer
-        # h_0_encoder[2] is the forward hidden state of the second layer
-        # h_0_encoder[3] is the backward hidden state of the second layer
-        # The same for c_0_encoder
-
-        encoder_outputs, (h_n_encoder, c_n_encoder) = self.encoder_lstm(source_seq, (h_0_encoder, c_0_encoder))
-        
-        # encoder_outputs shape [batch_size, source_len, hidden_size * (2 if self.bidirectional else 1)]
-        # encoder_outputs[:, :, 0] corresponds to the forward hidden states
-        # encoder_outputs[:, :, 1] corresponds to the backward hidden states
-        
-        #########################################
-        # LSTM decoder with attention mechanism #
-        #########################################
-
-        # Initialize a list to hold the decoder outputs
-        decoder_outputs = []
-        
-        if self.use_attention:
-
-            # Prepare the initial input for the decoder LSTM (e.g., could be a vector of zeros)
-            # 1 means the decoder will output one time step gradually
-            decoder_input = torch.zeros(batch_size, 1, self.label_size).to(source_seq.device)  
-            
-            # In attention mechanism, we dont need to receive the contextual data of hidden and cell state
-            # The attention mechanism would be able to get the contextual data from the encoder_outputs alone
-            
-            h_t_decoder = torch.zeros(self.num_layers, batch_size, 
-                                      self.hidden_size * 2 if self.bidirectional else self.hidden_size
-                                      ).to(source_seq.device)
-            c_t_decoder = torch.zeros(self.num_layers, batch_size, 
-                                      self.hidden_size * 2 if self.bidirectional else self.hidden_size
-                                      ).to(source_seq.device)
-                    
-            # Iterate over the number of steps over target_len
-            for t in range(self.target_len):
-                
-                # Pass the current input and the last hidden and cell states into the decoder LSTM
-                decoder_output, (h_t_decoder, c_t_decoder) = self.decoder_lstm(decoder_input, (h_t_decoder, c_t_decoder))
-                # decoder_output shape [batch_size, 1, hidden_size * (2 if self.bidirectional else 1)]
-                # print(encoder_outputs.size(), decoder_output.size())
-                # [32, 98, 10], [32, 1, 5]
-                # Attention needs the current decoder output and all encoder outputs
-                context_vector, attention_weights = self.attention(decoder_output, encoder_outputs)
-               
-                # context vector shape [batch_size, 1, hidden_size * (2 if self.bidirectional else 1)]
-                # attention_weights shape [batch_size, 1, source_len]
-                
-                # Add the context vector directly to the decoder output
-                decoder_output = decoder_output + context_vector
-                # Apply layer normalization
-                decoder_output = self.layer_norm(decoder_output)
-
-                # Pass the output through the fully connected layer
-                decoder_output = self.fc_final(decoder_output.squeeze(1))
-                # decoder_output shape [batch_size, 1]
-                
-                # Apply ReLU activation (target sequence value is always positive)
-                decoder_output = self.relu(decoder_output)
-                # decoder_output shape [batch_size, 1]
-
-                # Store the output for each time step
-                decoder_outputs.append(decoder_output.unsqueeze(1))
-
-                # Decide whether to use teacher forcing
-                if target_seq is not None and torch.rand(1).item() < teacher_forcing_prob:
-                    decoder_input = target_seq[:, t].unsqueeze(1)
-                else:
-                    decoder_input = decoder_output.unsqueeze(1)
-
-            # Concatenate all decoder outputs along the time dimension
-            
-            target_seq = torch.cat(decoder_outputs, dim=1)
-
-        ############################################
-        # LSTM decoder without attention mechanism #
-        ############################################
-
-        else:
-
-            # Prepare the initial input for the decoder LSTM (e.g., could be a vector of zeros)
-            # 1 means the decoder will output one time step gradually
-            decoder_input = torch.zeros(batch_size, 1, self.label_size).to(source_seq.device)  
-                
-            # Wihout attention mechanism, we need to receive the contextual data of last hidden and cell state
-            # Because the Decoder cannot have access to encoder_outputs directly
-            
-            if self.bidirectional:
-                # Reshape h_t_decoder, c_t_decoder from [num_layers * 2, batch_size, hidden_size]
-                #                                    to [num_layers, batch_size, hidden_size * 2]
-                h_t_decoder = h_n_encoder.view(self.num_layers, 2, batch_size, self.hidden_size)
-                h_t_decoder = torch.cat((h_t_decoder[:, 0, :, :], h_t_decoder[:, 1, :, :]), dim=2)
-                c_t_decoder = c_n_encoder.view(self.num_layers, 2, batch_size, self.hidden_size)
-                c_t_decoder = torch.cat((c_t_decoder[:, 0, :, :], c_t_decoder[:, 1, :, :]), dim=2)
-            else:
-                h_t_decoder = h_n_encoder
-                c_t_decoder = c_n_encoder
-            
-            # Iterate over the number of steps over target_len
-            for t in range(self.target_len):
-                
-                # Pass the current input and the last hidden and cell states into the decoder LSTM
-                decoder_output, (h_t_decoder, c_t_decoder) = self.decoder_lstm(decoder_input, (h_t_decoder, c_t_decoder))
-                # decoder_output shape [batch_size, 1, hidden_size * (2 if self.bidirectional else 1)]
-                
-                # Pass the output through the fully connected layer
-                decoder_output = self.fc_final(decoder_output.squeeze(1))
-                # decoder_output shape [batch_size, 1]
-                
-                # Apply ReLU activation
-                decoder_output = self.relu(decoder_output)
-                # decoder_output shape [batch_size, 1]
-
-                # Store the output for each time step
-                decoder_outputs.append(decoder_output.unsqueeze(1))
-
-                # Decide whether to use teacher forcing
-                if target_seq is not None and torch.rand(1).item() < teacher_forcing_prob:
-                    decoder_input = target_seq[:, t].unsqueeze(1)
-                else:
-                    decoder_input = decoder_output.unsqueeze(1)
-                    
-                # Use the output as the next input to the decoder
-                decoder_input = decoder_output.unsqueeze(1)
-
-            # Concatenate all decoder outputs along the time dimension
-            
-            target_seq = torch.cat(decoder_outputs, dim=1)
-        # time.sleep(180)
-        return target_seq
+        self.chosen_kernel = chosen_kernel
+        self.kernel_params = kernel_params
     
-    
+    def init_kernel():
+        
+    def init_model():
+
+        
+
+# Verify the shapes
+print("train_X shape:", train_X.shape)  # Should be (number of samples, number of features)
+print("train_Y shape:", train_Y.shape)  # Should be (number of samples, 1)
+
+
+
+# Define the kernel explicitly as an RBF kernel wrapped in a ScaleKernel
+# If we dont set the ard_num_dims, the kernel will assume that all input dimensions have the same lengthscale
+# It is known as an isotropic kernel
+
+GP_kernel = ScaleKernel(RBFKernel(ard_num_dims=train_X.shape[1])) + ConstantKernel()
+GP_kernel.to(train_X)
+
+GP_model = SingleTaskGP(train_X=train_X, train_Y=train_Y, 
+                    train_Yvar = None,
+                    likelihood = None,
+                    covar_module=GP_kernel)
+GP_model.likelihood.noise_covar.register_constraint("raw_noise", GreaterThan(1e-5))
+
+
+
+mll = ExactMarginalLogLikelihood(likelihood=GP_model.likelihood, model=GP_model)
+# set mll and all submodules to the specified dtype and device
+mll = mll.to(train_X)
+
+
+
+NUM_EPOCHS = 40000
+
+max_learning_rate = 0.0005
+min_learning_rate = 0.0001
+
+
+
+GP_model.train()
+
+def train(self, train_X, train_Y, NUM_EPOCHS, max_learning_rate, min_learning_rate, lr_decrement):
+    # Hyperparameters in the Multidimensional RBF Kernel
+    # In the multidimensional case, the RBF kernel has:
+    # One output scale parameter sigma for the entire kernel, which controls the overall variance of the function values.
+    # One lengthscale parameter per dimension controls the smoothness in the i-th input dimension.
+
+    # Initialize optimizer with the maximum learning rate
+    optimizer = Adam([{'params': GP_model.parameters()}], lr=max_learning_rate)
+
+    # Calculate the decrement step for the learning rate
+    lr_decrement = (max_learning_rate - min_learning_rate) / NUM_EPOCHS
+
+    for epoch in range(NUM_EPOCHS):
+        # clear gradients
+        optimizer.zero_grad()
+        # forward pass through the model to obtain the output MultivariateNormal
+        output = GP_model(train_X)
+        # Compute negative marginal log likelihood
+        loss = - mll(output, GP_model.train_targets)
+        # back prop gradients
+        loss.backward()
+        # print every 2000 iterations
+        if (epoch + 1) % 2000 == 0:
+            # Retrieve lengthscale, noise, and output scale for tracking
+            scale_kernel = list(GP_model.covar_module.sub_kernels())[0]
+            GP_kernel = list(GP_model.covar_module.sub_kernels())[1]
+            # GP_kernel is also scale_kernel.base_kernel
+            constant_kernel = list(GP_model.covar_module.sub_kernels())[2]
+            lengthscales = GP_kernel.lengthscale.tolist()[0]
+            noise = GP_model.likelihood.noise.tolist()
+            sigma = math.sqrt(scale_kernel.outputscale.item())  # Compute σ from σ^2
+            constant_value = constant_kernel.constant.item()     # Get the optimized constant value
+            
+            # Print kernel parameters
+            print(
+                f"Epoch {epoch+1:>3}/{NUM_EPOCHS} - Loss: {loss.item():>4.3f} ",
+                f"lengthscale: {[round(ls, 6) for ls in lengthscales]} ",
+                f"noise: {[round(n, 6) for n in noise]} ",
+                f"sigma: {round(sigma, 6)} ",
+                f"constant: {round(constant_value, 6)}"
+            )
+
+        # Update optimizer learning rate linearly
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = max(min_learning_rate, max_learning_rate - lr_decrement * epoch)
+
+        optimizer.step()
