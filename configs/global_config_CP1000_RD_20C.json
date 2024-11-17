@@ -29,51 +29,63 @@
     },
 
     "model_config": {
-        "chosen_kernel": "RBF_kernel",
         "model_name": "GP_model.pth",
+        "chosen_kernel": "RBFKernel",
 
-        "RBF_kernel": {
-            "scale_kernel": "yes",
-            "constant_kernel": "yes"
+        "RBFKernel": {
+            "scale_cov_kernel": true,
+            "constant_cov_kernel": true
         },
 
-        "exponential_kernel": {
-            "scale_kernel": "yes",
-            "constant_kernel": "yes"
-        },
-
-        "Matern_kernel": {
-            "scale_kernel": "yes",
-            "constant_kernel": "yes",
+        "MaternKernel": {
+            "scale_cov_kernel": true,
+            "constant_cov_kernel": true,
             "nu": 2.5
         },
 
+        "chosen_mean": "ConstantMean",
+
+        "chosen_likelihood": "ExactMarginalLogLikelihood",
+
+        "fixed_noise": false,
+        "fixed_noise_value": 1e-5,
+        "trainable_min_noise_constraint": 1e-5,
+
         "GP_training": {
-            "start_lr": 0.0005,
-            "end_lr": 0.0001,
-            "num_epochs": 50000,
-            "batch_size": 64
+            "training_log": true,
+            "chosen_optimizer": "Adam",
+            "start_learning_rate": 0.0005,
+            "end_learning_rate": 0.0001,
+            "num_epochs": 20000,
+            "weight_decay": 0.01,
+            "logging_every_epoch": 2000
+            
         }
     },
 
     "optimization_config": {
-        "maximize": false,
-        "chosen_acq": "UCB_acq",
-        "q": 1,
-        "num_restarts": 10,
+        "chosen_acq": "qUpperConfidenceBound",
+        "chosen_sampler": "SobolQMCNormalSampler",
+        "sample_shape": 1024,
+        "return_best_only": true,
+        "sequential": false,
+        "q": 2,
+        "num_restarts": 32,
         "raw_samples": 512,
         "options":{
             "batch_limit": 50,
             "max_iter": 200
         },
-        "UCB_acq": {
-            "kappa": 2.0
+
+        "qExpectedImprovement": {
+            "eta": 0.001
         },
-        "logEI_acq": {
-            "xi": 0.01
+        "qProbabilityOfImprovement": {
+            "eta": 0.001,
+            "tau": 0.001
         },
-        "PI_acq": {
-            "xi": 0.01
+        "qUpperConfidenceBound": {
+            "beta": 1.0
         }
     },
     

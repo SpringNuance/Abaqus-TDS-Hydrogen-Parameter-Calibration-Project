@@ -83,7 +83,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         target_values = np.array(target_values)
         sim_values = np.array(sim_values)
 
-        initial_labels.append(calculate_loss(target_values, sim_values, loss_function))
+        initial_labels.append(- calculate_loss(target_values, sim_values, loss_function))
     
     initial_labels = np.array(initial_labels)
 
@@ -151,7 +151,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         augmented_features_normalized = np.hstack((surface_H_zeros, augmented_features_normalized))
         
         # Set the augmented labels to the known_loss for each new point
-        augmented_labels = np.full((augmented_features_normalized.shape[0],), known_loss)
+        augmented_labels = np.full((augmented_features_normalized.shape[0],), - known_loss)
 
         # Concatenate the augmented data to the initial data
         initial_features_normalized_augmented = np.vstack((initial_features_normalized, augmented_features_normalized))
@@ -178,70 +178,21 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         np.save(f"{training_data_path}/initial_features_unnormalized_augmented.npy", initial_features_unnormalized_augmented)
         np.save(f"{training_data_path}/initial_labels_augmented.npy", initial_labels_augmented)
     
-    #############################
-    # ITERATION SIMULATION DATA #
-    #############################
+    ####################################
+    # FIND THE CURRENT ITERATION INDEX #
+    ####################################
+
+    current_iteration_index = 1
+    while os.path.exists(f"{results_iter_common_path}/iteration_{current_iteration_index}"):
+        current_iteration_index += 1
+    current_iteration_index -= 1
     
-    if os.path.exists(f"{results_iter_common_path}/TDS_measurements.npy"):
-        print_log(f"Loading the iteration TDS measurements", log_path)
-        # Loading the TDS_measurements.npy
-        iteration_sim_TDS_measurements = np.load(f"{results_init_common_path}/TDS_measurements.npy", allow_pickle=True).tolist()
-
-        iteration_features_unnormalized = []
-
-        for index, param_key in enumerate(param_config.keys()):
-            param_values_list = np.array([params_tuple[index][1] for params_tuple in iteration_sim_TDS_measurements.keys()])
-            iteration_features_unnormalized.append(param_values_list)
-
-        iteration_features_unnormalized = np.array(iteration_features_unnormalized).T
-    
-        # Now we need to normalize the iteration_features_unnormalized and iteration_labels
-
-        iteration_features_normalized = normalize_points(iteration_features_unnormalized, param_config)
-
-        iteration_labels = []
-        for params_tuple, sim_measurements in iteration_sim_TDS_measurements.items():
-            current_loss = 0
-            target_values = []
-            sim_values = []  
-            for sim_measurement in sim_measurements.values():
-                sim_measurement_time = sim_measurement["time"]
-                for target_measurement in target_TDS_measurements.values():
-                    target_measurement_time = target_measurement["time"]
-                    if sim_measurement_time == target_measurement_time:
-                        target_values.append(target_measurement["C_mol"])
-                        sim_values.append(sim_measurement["C_mol"])
-                        break
-
-            target_values = np.array(target_values)
-            sim_values = np.array(sim_values)
-
-            iteration_labels.append(calculate_loss(target_values, sim_values, loss_function))
-        
-        iteration_labels = np.array(iteration_labels)
-
-        print_log(f"Shape of iteration_features_normalized: {iteration_features_normalized.shape}", log_path)
-        print_log(f"Shape of iteration_features_unnormalized: {iteration_features_unnormalized.shape}", log_path)
-        print_log(f"Shape of iteration_labels: {iteration_labels.shape}", log_path)
-    
-        # Save the iteration data
-        np.save(f"{training_data_path}/iteration_features_normalized.npy", iteration_features_normalized)
-        np.save(f"{training_data_path}/iteration_features_unnormalized.npy", iteration_features_unnormalized)
-        np.save(f"{training_data_path}/iteration_labels.npy", iteration_labels)
-
     ########################################
     # COMBINING INITIAL AND ITERATION DATA #
     ########################################
 
-    if os.path.exists(f"{results_iter_common_path}/TDS_measurements.npy"):
-        combined_features_normalized = np.vstack((initial_features_normalized, iteration_features_normalized))
-        combined_features_unnormalized = np.vstack((initial_features_unnormalized, iteration_features_unnormalized))
-        combined_labels = np.concatenate((initial_labels, iteration_labels))
-        if "surface_H" in param_config.keys():
-            combined_features_normalized_augmented = np.vstack((initial_features_normalized_augmented, iteration_features_normalized))
-            combined_features_unnormalized_augmented = np.vstack((initial_features_unnormalized_augmented, iteration_features_unnormalized))
-            combined_labels_augmented = np.concatenate((initial_labels_augmented, iteration_labels))
-    else:
+    if current_iteration_index == 0:
+        print_log(f"No iteration data found - Loading only the initial data", log_path)
         combined_features_normalized = initial_features_normalized
         combined_features_unnormalized = initial_features_unnormalized
         combined_labels = initial_labels
@@ -249,7 +200,67 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
             combined_features_normalized_augmented = initial_features_normalized_augmented
             combined_features_unnormalized_augmented = initial_features_unnormalized_augmented
             combined_labels_augmented = initial_labels_augmented
+    else:
+        print_log(f"The current iteration index is {current_iteration_index}", log_path)
+        print_log(f"Combining the initial and iteration data into combined data", log_path)
+
+        if os.path.exists(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy"):
+            print_log(f"Loading the iteration TDS measurements", log_path)
+            
+            # Loading the TDS_measurements.npy
+            iteration_sim_TDS_measurements = np.load(f"{results_init_common_path}/iteration_common/TDS_measurements.npy", allow_pickle=True).tolist()
+
+            iteration_features_unnormalized = []
+
+            for index, param_key in enumerate(param_config.keys()):
+                param_values_list = np.array([params_tuple[index][1] for params_tuple in iteration_sim_TDS_measurements.keys()])
+                iteration_features_unnormalized.append(param_values_list)
+
+            iteration_features_unnormalized = np.array(iteration_features_unnormalized).T
+        
+            # Now we need to normalize the iteration_features_unnormalized and iteration_labels
+
+            iteration_features_normalized = normalize_points(iteration_features_unnormalized, param_config)
+
+            iteration_labels = []
+            for params_tuple, sim_measurements in iteration_sim_TDS_measurements.items():
+                current_loss = 0
+                target_values = []
+                sim_values = []  
+                for sim_measurement in sim_measurements.values():
+                    sim_measurement_time = sim_measurement["time"]
+                    for target_measurement in target_TDS_measurements.values():
+                        target_measurement_time = target_measurement["time"]
+                        if sim_measurement_time == target_measurement_time:
+                            target_values.append(target_measurement["C_mol"])
+                            sim_values.append(sim_measurement["C_mol"])
+                            break
+
+                target_values = np.array(target_values)
+                sim_values = np.array(sim_values)
+
+                iteration_labels.append(- calculate_loss(target_values, sim_values, loss_function))
+            
+            iteration_labels = np.array(iteration_labels)
+
+            print_log(f"Shape of iteration_features_normalized: {iteration_features_normalized.shape}", log_path)
+            print_log(f"Shape of iteration_features_unnormalized: {iteration_features_unnormalized.shape}", log_path)
+            print_log(f"Shape of iteration_labels: {iteration_labels.shape}", log_path)
+        
+            # Save the iteration data
+            np.save(f"{training_data_path}/iteration_features_normalized.npy", iteration_features_normalized)
+            np.save(f"{training_data_path}/iteration_features_unnormalized.npy", iteration_features_unnormalized)
+            np.save(f"{training_data_path}/iteration_labels.npy", iteration_labels)
+
     
+            combined_features_normalized = np.vstack((initial_features_normalized, iteration_features_normalized))
+            combined_features_unnormalized = np.vstack((initial_features_unnormalized, iteration_features_unnormalized))
+            combined_labels = np.concatenate((initial_labels, iteration_labels))
+            if "surface_H" in param_config.keys():
+                combined_features_normalized_augmented = np.vstack((initial_features_normalized_augmented, iteration_features_normalized))
+                combined_features_unnormalized_augmented = np.vstack((initial_features_unnormalized_augmented, iteration_features_unnormalized))
+                combined_labels_augmented = np.concatenate((initial_labels_augmented, iteration_labels))
+ 
     # Save the combined data
     np.save(f"{training_data_path}/combined_features_normalized.npy", combined_features_normalized)
     np.save(f"{training_data_path}/combined_features_unnormalized.npy", combined_features_unnormalized)
@@ -260,32 +271,37 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         np.save(f"{training_data_path}/combined_features_unnormalized_augmented.npy", combined_features_unnormalized_augmented)
         np.save(f"{training_data_path}/combined_labels_augmented.npy", combined_labels_augmented)
 
+    ############################
+    # Compiling stage4_outputs #
+    ############################
 
-    stage4_outputs = {
-        "initial_features_normalized": initial_features_normalized,
-        "initial_features_unnormalized": initial_features_unnormalized,
-        "initial_labels": initial_labels,
-    }
+    stage4_outputs = {}
+    stage4_outputs["initial_features_normalized"] = initial_features_normalized
+    stage4_outputs["initial_features_unnormalized"] = initial_features_unnormalized
+    stage4_outputs["initial_labels"] = initial_labels
 
     if "surface_H" in param_config.keys():
         stage4_outputs["initial_features_normalized_augmented"] = initial_features_normalized_augmented
         stage4_outputs["initial_features_unnormalized_augmented"] = initial_features_unnormalized_augmented
         stage4_outputs["initial_labels_augmented"] = initial_labels_augmented
 
-    if os.path.exists(f"{results_iter_common_path}/TDS_measurements.npy"):
+    if os.path.exists(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy"):
         stage4_outputs["iteration_features_normalized"] = iteration_features_normalized
         stage4_outputs["iteration_features_unnormalized"] = iteration_features_unnormalized
         stage4_outputs["iteration_labels"] = iteration_labels
 
-        stage4_outputs["combined_features_normalized"] = combined_features_normalized
-        stage4_outputs["combined_features_unnormalized"] = combined_features_unnormalized
-        stage4_outputs["combined_labels"] = combined_labels
+    
+    stage4_outputs["combined_features_normalized"] = combined_features_normalized
+    stage4_outputs["combined_features_unnormalized"] = combined_features_unnormalized
+    stage4_outputs["combined_labels"] = combined_labels
 
-        if "surface_H" in param_config.keys():
-            stage4_outputs["combined_features_normalized_augmented"] = combined_features_normalized_augmented
-            stage4_outputs["combined_features_unnormalized_augmented"] = combined_features_unnormalized_augmented
-            stage4_outputs["combined_labels_augmented"] = combined_labels_augmented
-
+    if "surface_H" in param_config.keys():
+        stage4_outputs["combined_features_normalized_augmented"] = combined_features_normalized_augmented
+        stage4_outputs["combined_features_unnormalized_augmented"] = combined_features_unnormalized_augmented
+        stage4_outputs["combined_labels_augmented"] = combined_labels_augmented
+    
+    stage4_outputs["current_iteration_index"] = current_iteration_index
+    
     return stage4_outputs
 
 if __name__ == "__main__":

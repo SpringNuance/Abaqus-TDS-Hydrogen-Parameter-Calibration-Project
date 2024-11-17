@@ -65,7 +65,7 @@ def main_pipeline(stage, chosen_project_path):
     # ======================================= #
 
     if stage >= 5:
-
+        
         stage5_outputs = stage5_train_GP_model.main_train_GP_model(global_configs, stage4_outputs)
 
     # ================================== #
@@ -74,8 +74,11 @@ def main_pipeline(stage, chosen_project_path):
     
     if stage >= 6:
 
-        stage6_run_iteration_sims.main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
-                                                          stage4_outputs, stage5_outputs)
+        while (True):
+            stage6_outputs = stage6_run_iteration_sims.main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
+                                                                                stage4_outputs, stage5_outputs)
+            stage4_outputs = stage4_prepare_sim_data.main_prepare_sim_data(global_configs, stage2_outputs)
+            stage5_outputs = stage5_train_GP_model.main_train_GP_model(global_configs)
      
 def parse_args():
     stages_name = ["Stage 1: Initialize directories and load global configs",
