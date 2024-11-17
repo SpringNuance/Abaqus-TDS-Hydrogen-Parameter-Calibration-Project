@@ -20,7 +20,7 @@ from src.stage5_train_GP_model import main_train_GP_model
 import time
 
 def main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs, 
-                            stage4_outputs, stage5_outputs, stage6_outputs):
+                            stage4_outputs, stage5_outputs):
 
     """
     Run iterative simulations integrating outputs from all previous stages.
@@ -122,11 +122,11 @@ def main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
         stage6_outputs["iteration_FD_curves_interpolated_combined"]
 
     #######################
-    # Stage 7 starts here #
+    # Stage 6 starts here #
     #######################
 
     print_log("\n======================================", log_path)
-    print_log("= Stage 7: Run iterative simulations =", log_path)
+    print_log("= Stage 6: Run iterative simulations =", log_path)
     print_log("======================================\n", log_path)
     
     ######################################################
