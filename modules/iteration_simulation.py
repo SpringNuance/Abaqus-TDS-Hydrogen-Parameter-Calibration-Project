@@ -5,12 +5,39 @@ from typing import List, Dict, Any, Tuple, Union
 from utils.IO import *
 from utils.calculation import *
 from utils.hardening_laws import *
+import sys
 import shutil
 import random
 import time
 import os
-    
-# __new__ is called before __iter__ and then the object is returned
+import multiprocessing
+from subprocess import Popen
+
+def get_cpu_cores():
+    if os.name == 'posix':  # For Unix-based systems (e.g., Linux, macOS)
+        try:
+            return os.sysconf('SC_NPROCESSORS_ONLN')
+        except ValueError:
+            pass
+    elif os.name == 'nt':  # For Windows
+        try:
+            return int(os.environ['NUMBER_OF_PROCESSORS'])
+        except (ValueError, KeyError):
+            pass
+
+    # Fallback option if the above methods fail
+    return multiprocessing.cpu_count()
+
+def run_bat_files_parallel(commands, paths):
+    processes = []
+    for index, command in enumerate(commands):
+        process = Popen(command, cwd=paths[index], shell=True)
+        processes.append(process)
+
+    # Wait for all processes to finish
+    for process in processes:
+        process.wait()
+
 
 class IterationSimFramework():
 
@@ -22,226 +49,193 @@ class IterationSimFramework():
     def __repr__(self) -> str:
         description = ""
         description += "Iteration Simulation Framework Object\n"
-        description += f"Objective: {self.objective}\n"
         description += f"Delete Simulation Outputs: {self.delete_sim}\n" 
         return description
-
-    def __init__(self, objective, delete_sim, array_job_config,
-                 all_paths) -> None:
+    
+    def __init__(self,  param_config, description_properties_dict,
+                        delete_sim, all_paths) -> None:
         
-        self.objective = objective
+        self.param_config = param_config
+        self.description_properties_dict = description_properties_dict
+
         self.delete_sim = delete_sim
-        self.array_job_config = array_job_config
         self.project_path = all_paths["project_path"]
+        self.log_path = all_paths["log_path"]
         self.results_iter_common_path = all_paths["results_iter_common_path"]
         self.results_iter_data_path = all_paths["results_iter_data_path"]
         self.sims_iter_path = all_paths["sims_iter_path"]
         self.templates_path = all_paths["templates_path"]
         self.scripts_path = all_paths["scripts_path"]
+        self.targets_path = all_paths["targets_path"]
 
-        self.results_iter_common_objective_path = f"{self.results_iter_common_path}/{objective}"
-        self.results_iter_data_objective_path = f"{self.results_iter_data_path}/{objective}"
-        self.sims_iter_objective_path = f"{self.sims_iter_path}/{objective}"
-        self.templates_objective_path = f"{self.templates_path}/{objective}"
+    ###############################
+    # Iteration SIMULATION PIPELINE #
+    ###############################
 
-    #################################
-    # ITERATION SIMULATION PIPELINE #
-    #################################
+    def run_iteration_simulations(self, next_iteration_predicted_params, 
+            prediction_indices, next_iteration_index, input_file_name):
+        index_params_dict = self.create_index_params_dict(next_iteration_predicted_params, prediction_indices)
 
-    def run_iteration_simulations(self, iteration_predicted_params, 
-                                true_plastic_strain, iteration_true_stress,
-                                prediction_indices, iteration_index, input_file_name):
-        
-        index_params_dict = self.create_index_params_dict(iteration_predicted_params, prediction_indices)
-        index_true_stress_dict = self.create_index_true_stress_dict(iteration_true_stress, prediction_indices)
-        array_job_config = self.array_job_config
-        
-        self.preprocess_simulations_iteration(iteration_index, index_params_dict, index_true_stress_dict, true_plastic_strain, input_file_name)
-        self.write_paths_iteration(iteration_index, index_params_dict)
-        self.write_array_shell_script(array_job_config, input_file_name)
-        self.submit_array_jobs_iteration(index_params_dict)
-        self.postprocess_results_iteration(iteration_index, index_params_dict)
+        self.preprocess_simulations_iteration(next_iteration_index, index_params_dict, input_file_name)
+        self.submit_array_jobs_iteration(next_iteration_index, prediction_indices)
+        self.postprocess_results_iteration(next_iteration_index, index_params_dict)
 
         delete_sim = self.delete_sim
         if delete_sim:
-            self.delete_sim_outputs_iteration(iteration_index, index_params_dict)
+            self.delete_sim_outputs_iteration(next_iteration_index, index_params_dict)
 
-    ################################
+    ##############################
     # ITERATION SIMULATION METHODS #
-    ################################
+    ##############################
 
-    def create_index_params_dict(self, iteration_predicted_params, prediction_indices):
+    # Clarification
+    # index is the index passed from the current indices of the current batch
+    # For example, if max_concurrent_samples is 64, and current batch is 2,
+    # then the current indices will be [65, 66, 67, ..., 128]
+    # On the other hand, order is always the count from 0 to max_concurrent_samples - 1 for one batch
+          
+    def create_index_params_dict(self, next_iteration_predicted_params, prediction_indices):
         """
-        This function creates a dictionary of prediction index to parameters tuple
-        For example at iteration 2, and num_synthetic_predictions is 15, plus one true prediction
-        the index_params_dict will be
-        {1: ((param1: value), (param2: value, ...), ...), 
-         2: ((param1: value), (param2: value, ...), ...),
+        This function creates a dictionary of index to parameters tuple
+        For example at batch 2, max_concurrent_samples is 64
+        The index_params_dict will be
+        {65: ((param1: value), (param2: value, ...), ...), 
+         66: ((param1: value), (param2: value, ...), ...),
             ...
-         16: ((param1: value), (param2: value, ...), ...)}
+         128: ((param1: value), (param2: value, ...), ...)}
         """
         index_params_dict = {}
-        for order, params_dict in enumerate(iteration_predicted_params):
+        for order, params_dict in enumerate(next_iteration_predicted_params):
             index = str(prediction_indices[order])
             index_params_dict[index] = tuple(params_dict.items())
         return index_params_dict
     
-    def create_index_true_stress_dict(self, iteration_true_stress, prediction_indices):
-        """
-        This function creates a dictionary of index to true stress array
-        For example at iteration 2, and num_synthetic_predictions is 15, plus one true prediction
-        The index_true_stress_dict will be
-        {1: [stress1, stress2, ..., stressN], 
-         2: [stress1, stress2, ..., stressN],
-            ...
-         16: [stress1, stress2, ..., stressN]}
-        """
-        index_true_stress_dict = {}
-        for order, true_stress in enumerate(iteration_true_stress):
-            index = str(prediction_indices[order])
-            index_true_stress_dict[index] = true_stress
-        return index_true_stress_dict
+    def preprocess_simulations_iteration(self, next_iteration_index, index_params_dict, input_file_name):
+        targets_path = self.targets_path
+        sims_iter_path = self.sims_iter_path
+        templates_path = self.templates_path
+        param_config = self.param_config
+        description_properties_dict = self.description_properties_dict
 
-    def preprocess_simulations_iteration(self, iteration_index, index_params_dict, 
-                                         index_true_stress_dict, true_plastic_strain, 
-                                         input_file_name):
-        sims_iter_objective_path = self.sims_iter_objective_path
-        templates_objective_path = self.templates_objective_path
+        if os.path.exists(f"{sims_iter_path}/iteration_{next_iteration_index}"):
+            shutil.rmtree(f"{sims_iter_path}/iteration_{next_iteration_index}")
+        os.mkdir(f"{sims_iter_path}/iteration_{next_iteration_index}")
 
-        # Create the simulation folder if not exists, else delete the folder and create a new one
-        
-        if os.path.exists(f"{sims_iter_objective_path}/iteration_{iteration_index}"):
-            shutil.rmtree(f"{sims_iter_objective_path}/iteration_{iteration_index}")
-        os.makedirs(f"{sims_iter_objective_path}/iteration_{iteration_index}", exist_ok=True)
+        for index, params_tuple in index_params_dict.items():
+            # Create the simulation folder if not exists, else delete the folder and create a new one
+            if os.path.exists(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}"):
+                shutil.rmtree(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}")
+            shutil.copytree(templates_path, f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}")
 
-        for prediction_index, params_tuple in index_params_dict.items():
-            
-            shutil.copytree(templates_objective_path, f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            
-            true_stress = index_true_stress_dict[prediction_index]
+            params_dict = dict(params_tuple)
+            #print(params_dict)
+            for param_key, param_value in params_dict.items():
+                if param_config[param_key]['replace_prop'] == 'thermal':
+                    description_properties_dict["hydrogen_diffusion_properties"][param_key]["value"] = str(param_value)
+                if param_config[param_key]['replace_prop'] == 'mechanical':
+                    description_properties_dict["mechanical_properties"][param_key]["value"] = str(param_value)
 
-            replace_flow_curve(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/{input_file_name}", true_plastic_strain, true_stress)
+            UMAT_PROPERTY, total_UMAT_num_properties = return_UMAT_property(description_properties_dict)
+            UMATHT_PROPERTY, total_UMATHT_num_properties = return_UMATHT_property(description_properties_dict)
 
-            create_parameter_file(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}", dict(params_tuple))
-            create_flow_curve_file(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}", true_plastic_strain, true_stress)
+            replace_TDS_props(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/{input_file_name}", 
+                UMAT_PROPERTY, total_UMAT_num_properties, 
+                UMATHT_PROPERTY, total_UMATHT_num_properties)
 
-    def write_paths_iteration(self, iteration_index, index_params_dict):
+            check_surface_H = False
+            for param_key, param_value in params_dict.items():
+                if param_key == "surface_H":
+                    check_surface_H = True
+                    break
+
+            if check_surface_H:
+                surface_H_value = params_dict["surface_H"]
+                replace_surface_H(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/{input_file_name}", surface_H_value)
+
+            # time.sleep(180)
+
+            create_parameter_file(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}", dict(params_tuple))
+
+    def write_paths_iteration(self, next_iteration_index, index_params_dict):
         project_path = self.project_path
-        sims_iter_objective_path = self.sims_iter_objective_path
+        sims_iter_path = self.sims_iter_path
         scripts_path = self.scripts_path
 
         with open(f"{scripts_path}/iteration_simulation_array_paths.txt", 'w') as filename:
-            for prediction_index in list(index_params_dict.keys()):
-                filename.write(f"{project_path}/{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}\n")
+            for index in list(index_params_dict.keys()):
+                filename.write(f"{project_path}/{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}\n")
     
-    def submit_array_jobs_iteration(self, index_params_dict):   
-        sims_number = len(index_params_dict)
-        scripts_path = self.scripts_path
-
-        print("Initial simulation preprocessing stage starts")
-        print(f"Number of jobs required: {sims_number}")
-
-        ########################################
-        # CSC command to submit the array jobs #
-        ########################################
-
-        # The wait flag is used to wait until all the jobs are finished
-
-        subprocess.run(f"sbatch --wait --array=1-{sims_number} {scripts_path}/puhti_abaqus_array_iteration.sh", shell=True)
-        print("Iteration simulation postprocessing stage finished")
+    def submit_array_jobs_iteration(self, next_iteration_index, prediction_indices):
+        project_path = self.project_path
+        sims_iter_path = self.sims_iter_path
+        log_path = self.log_path
+ 
+        commands = []
+        paths = []
+        for index in prediction_indices:
+            commands.append("start /wait cmd /c run.bat")
+            paths.append(f"{project_path}/{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}")
     
-    def postprocess_results_iteration(self, iteration_index, index_params_dict):
+        print_log(f"Number of called subprocesses required: {len(prediction_indices)}", log_path)
+        #time.sleep(180)
+        run_bat_files_parallel(commands, paths)
+        print_log("Iteration simulations for the parameters have finished", log_path)
+    
+    def postprocess_results_iteration(self, next_iteration_index, index_params_dict):
 
-        sims_iter_objective_path = self.sims_iter_objective_path
-        results_iter_common_objective_path = self.results_iter_common_objective_path
-        results_iter_data_objective_path = self.results_iter_data_objective_path
-        
-        if os.path.exists(f"{results_iter_data_objective_path}/iteration_{iteration_index}"):
-            shutil.rmtree(f"{results_iter_data_objective_path}/iteration_{iteration_index}")
-        os.makedirs(f"{results_iter_data_objective_path}/iteration_{iteration_index}", exist_ok=True)
+        sims_iter_path = self.sims_iter_path
+        results_iter_common_path = self.results_iter_common_path
+        results_iter_data_path = self.results_iter_data_path
+        targets_path = self.targets_path
+        columns_TDS_measurement = pd.read_excel(f"{targets_path}/columns_TDS_measurement.xlsx")["depvar_name"]
+        columns_TDS_measurement = columns_TDS_measurement.to_list()
+        #print(columns_TDS_measurement)
+        #time.sleep(180)
+        # The structure of force-displacement curve: dict of (CP params tuple of tuples) -> {force: forceArray , displacement: displacementArray}
 
-        FD_curves_iteration = {}
-        
-        for prediction_index, params_tuple in index_params_dict.items():
-            
-            if not os.path.exists(f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}"):
-                os.mkdir(f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            shutil.copy(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/FD_curve.txt", 
-                        f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            shutil.copy(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/parameters.xlsx", 
-                        f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            shutil.copy(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/parameters.csv", 
-                        f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            shutil.copy(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/flow_curve.xlsx", 
-                        f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-            shutil.copy(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/flow_curve.csv", 
-                        f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
+        TDS_measurements_batch = {}
 
-            displacement, force = read_FD_curve(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}/FD_curve.txt")
-            create_FD_curve_file(f"{results_iter_data_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}", displacement, force)
+        if os.path.exists(f"{results_iter_data_path}/iteration_{next_iteration_index}"):
+            shutil.rmtree(f"{results_iter_data_path}/iteration_{next_iteration_index}")
+        os.mkdir(f"{results_iter_data_path}/iteration_{next_iteration_index}")
+        if os.path.exists(f"{results_iter_common_path}/iteration_{next_iteration_index}"):
+            shutil.rmtree(f"{results_iter_common_path}/iteration_{next_iteration_index}")
+        os.mkdir(f"{results_iter_common_path}/iteration_{next_iteration_index}")
 
-            FD_curves_iteration[params_tuple] = {"displacement": displacement, "force": force}
+        for index, params_tuple in index_params_dict.items():
+            if not os.path.exists(f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}"):
+                os.mkdir(f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}")
+            shutil.copy(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/TDS_measurement.txt", 
+                        f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}")
+            shutil.copy(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/parameters.xlsx", 
+                        f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}")
+            shutil.copy(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/parameters.csv", 
+                        f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}")
+
+            TDS_measurement_df = read_TDS_measurement(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}/TDS_measurement.txt", columns_TDS_measurement)
+            # print(TDS_measurement_df)
+            # time.sleep(180)
+            # Save it to results_iter_data_path
+            TDS_measurement_df.to_csv(f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}/TDS_measurement.csv", index=False)
+            TDS_measurement_df.to_excel(f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}/TDS_measurement.xlsx", index=False)
+            # create_TDS_measurement_file(f"{results_iter_data_path}/prediction_{index}", displacement, force)
+
+            TDS_measurements_batch[params_tuple] = {}
+            for num_measurement, row in enumerate(TDS_measurement_df.iterrows()):
+                time = row[1]["time"]
+                C_wtppm = row[1]["C_wtppm"]
+                C_mol = row[1]["C_mol"]
+                if time != 0.0:
+                    TDS_measurements_batch[params_tuple][f"measurement_{num_measurement}"] =\
+                        {"time": time, "C_wtppm": C_wtppm, "C_mol": C_mol}
+            # print(TDS_measurements_batch[params_tuple])
                     
-        # Saving force-displacement curve data for current iteration
-        np.save(f"{results_iter_common_objective_path}/FD_curves_iteration_{iteration_index}.npy", FD_curves_iteration)
-        print(f"Saving successfully FD_curves_iteration_{iteration_index}.npy results for iteration {iteration_index} of {self.objective}")
-    
-    def delete_sim_outputs_iteration(self, iteration_index, index_params_dict):
-        sims_iter_objective_path = self.sims_iter_objective_path
-        for prediction_index, params_tuple in index_params_dict.items():
-            shutil.rmtree(f"{sims_iter_objective_path}/iteration_{iteration_index}/prediction_{prediction_index}")
-
-    def write_array_shell_script(self, array_job_config, input_file_name):
-        input_file_name_without_extension = input_file_name.split(".")[0]
-        scripts_path = self.scripts_path
-        # Start building the shell script with the header and shebang
-        script = "#!/bin/bash -l\n"
-        script += "# Author: Xuan Binh\n"
+        # Saving force-displacement curve data for current batch
+        np.save(f"{results_iter_common_path}/iteration_{next_iteration_index}/TDS_measurements.npy", TDS_measurements_batch)
+        print(f"Saving successfully TDS_measurements.npy results for iteration {next_iteration_index}")
+        # time.sleep(180)
         
-        # Add SBATCH directives based on the configuration dictionary
-        for key, value in array_job_config.items():
-            if key == "job_name":
-                script += f"#SBATCH --job-name={value}\n"
-            elif key == "nodes":
-                script += f"#SBATCH --nodes={value}\n"
-            elif key == "ntasks":
-                script += f"#SBATCH --ntasks={value}\n"
-            elif key == "cpus_per_task":
-                script += f"#SBATCH --cpus-per-task={value}\n"
-            elif key == "time":
-                script += f"#SBATCH --time={value}\n"
-            elif key == "partition":
-                script += f"#SBATCH --partition={value}\n"
-            elif key == "account":
-                script += f"#SBATCH --account={value}\n"
-            elif key == "mail_type":
-                script += f"#SBATCH --mail-type={value}\n"
-            elif key == "mail_user":
-                script += f"#SBATCH --mail-user={value}\n"
-        
-        # Add environment and module setup commands
-        script += """
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-unset SLURM_GTIDS
-module purge
-module load abaqus\n"""
-
-        # Change to the work directory
-        script += f"""
-### Change to the work directory
-fullpath=$(sed -n ${{SLURM_ARRAY_TASK_ID}}p {scripts_path}/iteration_simulation_array_paths.txt) 
-cd ${{fullpath}}\n"""
-
-        # Construct the Abaqus command with dynamic CPU allocation
-        script += f"""
-CPUS_TOTAL=$(( $SLURM_NTASKS*$SLURM_CPUS_PER_TASK ))
-
-abaqus job={input_file_name_without_extension} input={input_file_name} cpus=$CPUS_TOTAL -verbose 2 interactive\n"""
-
-        # Post-processing command
-        script += """
-# run postprocess.py after the simulation completes
-abaqus cae noGUI=postprocess.py\n"""
-                
-        with open(f"{scripts_path}/puhti_abaqus_array_iteration.sh", 'w') as filename:
-            filename.write(script)
+    def delete_sim_outputs_iteration(self, next_iteration_index, index_params_dict):
+        sims_iter_path = self.sims_iter_path
+        for index, params_tuple in index_params_dict.items():
+            shutil.rmtree(f"{sims_iter_path}/iteration_{next_iteration_index}/prediction_{index}")

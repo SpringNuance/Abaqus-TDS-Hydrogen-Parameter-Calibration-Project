@@ -183,7 +183,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
     ####################################
 
     current_iteration_index = 1
-    while os.path.exists(f"{results_iter_common_path}/iteration_{current_iteration_index}"):
+    while os.path.exists(f"{results_iter_common_path}/iteration_{current_iteration_index}/TDS_measurements.npy"):
         current_iteration_index += 1
     current_iteration_index -= 1
     
@@ -286,6 +286,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         stage4_outputs["initial_labels_augmented"] = initial_labels_augmented
 
     if os.path.exists(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy"):
+        stage4_outputs["iteration_sim_TDS_measurements"] = iteration_sim_TDS_measurements
         stage4_outputs["iteration_features_normalized"] = iteration_features_normalized
         stage4_outputs["iteration_features_unnormalized"] = iteration_features_unnormalized
         stage4_outputs["iteration_labels"] = iteration_labels

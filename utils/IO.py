@@ -28,7 +28,7 @@ def print_log(message, log_path, file_name="output.log", pause=0.02):
     print(message)
     time.sleep(pause)
 
-def pretty_print_parameters(params_dict, param_config, log_path=None):
+def pretty_print_parameter(params_dict, param_config, log_path=None):
     """
     Print the parameters in a pretty table format
     """
@@ -43,6 +43,49 @@ def pretty_print_parameters(params_dict, param_config, log_path=None):
     string_message = "\n"
     string_message += log_table.get_string()
     string_message += "\n"
+    if log_path is not None:
+        print_log(string_message, log_path)
+    else:
+        print(string_message)
+
+from prettytable import PrettyTable
+
+def pretty_print_parameters(params_dict_list, param_config, log_path=None):
+    """
+    Print multiple parameter sets in a pretty table format, where each column shows a candidate set of parameters.
+    
+    :param params_dict_list: List of dictionaries containing parameter sets, e.g., [{'param1': val1, 'param2': val2}, ...]
+    :param param_config: Dictionary of parameter configuration, containing name and unit for each parameter.
+    :param log_path: Optional path to log the table output.
+    """
+    # Initialize PrettyTable
+    log_table = PrettyTable()
+
+    # Set up field names with the parameter names as rows and candidate labels as columns
+    columns = ["Parameter"] + [f"Candidate {i + 1}" for i in range(len(params_dict_list))]
+    log_table.field_names = columns
+
+    # Build rows based on parameter names, iterating over each parameter in param_config
+    for param, config in param_config.items():
+        param_name = config['name']
+        param_unit = config['unit']
+        
+        # Initialize a row with the parameter name
+        row = [param_name]
+        
+        # Add values from each candidate set, formatted with the unit if available
+        for params_dict in params_dict_list:
+            param_value = params_dict.get(param, "N/A")  # Default to "N/A" if missing
+            param_value_unit = f"{param_value} {param_unit}" if param_unit != "dimensionless" else param_value
+            row.append(param_value_unit)
+
+        # Add the row to the table
+        log_table.add_row(row)
+
+    # Generate the table string
+    string_message = "\n" + log_table.get_string() + "\n"
+    
+    # Print or log the table
     if log_path is not None:
         print_log(string_message, log_path)
     else:

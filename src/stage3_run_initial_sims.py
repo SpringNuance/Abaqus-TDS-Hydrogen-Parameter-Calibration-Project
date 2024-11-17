@@ -101,8 +101,9 @@ def main_run_initial_sims(global_configs, stage2_outputs):
         print_log(f"Finish concatenating the batches of initial guesses together", log_path)
         print_log(f"Number of initial simulations: {num_simulations} FD curves", log_path)
 
+    initial_sim_TDS_measurements = np.load(f"{results_init_common_path}/TDS_measurements.npy", allow_pickle=True).tolist()
     stage3_outputs = {
-        'initial_TDS_measurements': TDS_measurements
+        'initial_sim_TDS_measurements': initial_sim_TDS_measurements
     }
 
     return stage3_outputs

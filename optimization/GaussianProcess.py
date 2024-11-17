@@ -23,7 +23,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 dtype = torch.float64
 
-class GaussianProcess():
+class GaussianProcessWrapper():
     def __init__(self, model_config, all_paths, train_X, train_Y):
 
         self.chosen_kernel = model_config['chosen_kernel']
