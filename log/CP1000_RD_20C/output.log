@@ -25686,3 +25686,1915 @@ Shape of combined_labels_augmented: (187,)
 ===========================================
 
 Epoch 4000/20000 - Loss: 0.819 - sigma: 1.712498 - lengthscales: [0.11915, 0.14006] - cov constant: 0.286518 - mean constant: -1.421305 - noise: 0.085374
+Epoch 8000/20000 - Loss: 0.804 - sigma: 2.111829 - lengthscales: [0.131121, 0.156038] - cov constant: 0.306866 - mean constant: -1.742509 - noise: 0.082607
+Epoch 12000/20000 - Loss: 0.800 - sigma: 2.256206 - lengthscales: [0.135037, 0.161049] - cov constant: 0.330569 - mean constant: -1.840728 - noise: 0.082115
+Epoch 16000/20000 - Loss: 0.800 - sigma: 2.260812 - lengthscales: [0.135157, 0.161205] - cov constant: 0.33131 - mean constant: -1.843781 - noise: 0.082101
+Epoch 20000/20000 - Loss: 0.800 - sigma: 2.260812 - lengthscales: [0.135157, 0.161205] - cov constant: 0.33131 - mean constant: -1.843781 - noise: 0.082101
+Previous iterations found. Saving the model to iteration_76
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 76 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are 0.13498076285610922
+
++-----------+-----------------------------+-----------------------------+
+| Parameter |         Candidate 1         |         Candidate 2         |
++-----------+-----------------------------+-----------------------------+
+| surface_H |        10.35 mol/m^3        |  9.237391177946037 mol/m^3  |
+|     DL    | 9.999999999999999e-10 m^2/s | 9.999999999999999e-10 m^2/s |
++-----------+-----------------------------+-----------------------------+
+
+Saving iteration 77 parameters
+=======================================================================
+(Iteration 77) There is no TDS_measurements.npy for iteration 77
+(Iteration 77) Program starts running the simulations of iteration 77
+(Iteration 77) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 77 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 154 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 77
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (154, 2)
+Shape of iteration_features_unnormalized: (154, 2)
+Shape of iteration_labels: (154,)
+Shape of combined_features_normalized: (186, 2)
+Shape of combined_features_unnormalized: (186, 2)
+Shape of combined_labels: (186,)
+Shape of combined_features_normalized_augmented: (189, 2)
+Shape of combined_features_unnormalized_augmented: (189, 2)
+Shape of combined_labels_augmented: (189,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.820 - sigma: 1.70336 - lengthscales: [0.120872, 0.142088] - cov constant: 0.288414 - mean constant: -1.429325 - noise: 0.086192
+Epoch 8000/20000 - Loss: 0.806 - sigma: 2.094049 - lengthscales: [0.133204, 0.157246] - cov constant: 0.303755 - mean constant: -1.738952 - noise: 0.083209
+Epoch 12000/20000 - Loss: 0.803 - sigma: 2.223285 - lengthscales: [0.136907, 0.161819] - cov constant: 0.325048 - mean constant: -1.827206 - noise: 0.0828
+Epoch 16000/20000 - Loss: 0.803 - sigma: 2.225977 - lengthscales: [0.136981, 0.161913] - cov constant: 0.325483 - mean constant: -1.829005 - noise: 0.082792
+Epoch 20000/20000 - Loss: 0.803 - sigma: 2.225977 - lengthscales: [0.136981, 0.161913] - cov constant: 0.325483 - mean constant: -1.829005 - noise: 0.082792
+Previous iterations found. Saving the model to iteration_77
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 77 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are 0.029230382264923235
+
++-----------+----------------------------+------------------------------+
+| Parameter |        Candidate 1         |         Candidate 2          |
++-----------+----------------------------+------------------------------+
+| surface_H |       10.35 mol/m^3        |  9.459374967263917 mol/m^3   |
+|     DL    | 9.71498007912213e-11 m^2/s | 1.1636174071637392e-10 m^2/s |
++-----------+----------------------------+------------------------------+
+
+Saving iteration 78 parameters
+=======================================================================
+(Iteration 78) There is no TDS_measurements.npy for iteration 78
+(Iteration 78) Program starts running the simulations of iteration 78
+(Iteration 78) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+
+START RUNNING FROM *** 2024-11-18 19:12:13 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
+|       MODELS_PATH        |                              models/CP1000_RD_20C                             |
+|    TRAINING_DATA_PATH    |                          training_data/CP1000_RD_20C                          |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 32
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 32
+Max concurrent samples: 2
+Number of batches: 16
+=======================================================================
+TDS_measurements.npy already exist.
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 77
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (154, 2)
+Shape of iteration_features_unnormalized: (154, 2)
+Shape of iteration_labels: (154,)
+Shape of combined_features_normalized: (186, 2)
+Shape of combined_features_unnormalized: (186, 2)
+Shape of combined_labels: (186,)
+Shape of combined_features_normalized_augmented: (189, 2)
+Shape of combined_features_unnormalized_augmented: (189, 2)
+Shape of combined_labels_augmented: (189,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.820 - sigma: 1.70336 - lengthscales: [0.120872, 0.142088] - cov constant: 0.288414 - mean constant: -1.429325 - noise: 0.086192
+Epoch 8000/20000 - Loss: 0.806 - sigma: 2.094049 - lengthscales: [0.133204, 0.157246] - cov constant: 0.303755 - mean constant: -1.738952 - noise: 0.083209
+Epoch 12000/20000 - Loss: 0.803 - sigma: 2.223285 - lengthscales: [0.136907, 0.161819] - cov constant: 0.325048 - mean constant: -1.827206 - noise: 0.0828
+Epoch 16000/20000 - Loss: 0.803 - sigma: 2.225977 - lengthscales: [0.136981, 0.161913] - cov constant: 0.325483 - mean constant: -1.829005 - noise: 0.082792
+Epoch 20000/20000 - Loss: 0.803 - sigma: 2.225977 - lengthscales: [0.136981, 0.161913] - cov constant: 0.325483 - mean constant: -1.829005 - noise: 0.082792
+Previous iterations found. Saving the model to iteration_77
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 77 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are 0.028217719038236413
+
++-----------+-----------------------------+-----------------------------+
+| Parameter |         Candidate 1         |         Candidate 2         |
++-----------+-----------------------------+-----------------------------+
+| surface_H |  9.447082168887754 mol/m^3  |        10.35 mol/m^3        |
+|     DL    | 1.167447020611523e-10 m^2/s | 7.849330743940762e-10 m^2/s |
++-----------+-----------------------------+-----------------------------+
+
+Saving iteration 78 parameters
+=======================================================================
+(Iteration 78) There is no TDS_measurements.npy for iteration 78
+(Iteration 78) Program starts running the simulations of iteration 78
+(Iteration 78) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 78 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 156 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 78
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (156, 2)
+Shape of iteration_features_unnormalized: (156, 2)
+Shape of iteration_labels: (156,)
+Shape of combined_features_normalized: (188, 2)
+Shape of combined_features_unnormalized: (188, 2)
+Shape of combined_labels: (188,)
+Shape of combined_features_normalized_augmented: (191, 2)
+Shape of combined_features_unnormalized_augmented: (191, 2)
+Shape of combined_labels_augmented: (191,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+
+START RUNNING FROM *** 2024-11-18 19:15:54 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
+|       MODELS_PATH        |                              models/CP1000_RD_20C                             |
+|    TRAINING_DATA_PATH    |                          training_data/CP1000_RD_20C                          |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 32
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 32
+Max concurrent samples: 2
+Number of batches: 16
+=======================================================================
+TDS_measurements.npy already exist.
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 78
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (156, 2)
+Shape of iteration_features_unnormalized: (156, 2)
+Shape of iteration_labels: (156,)
+Shape of combined_features_normalized: (188, 2)
+Shape of combined_features_unnormalized: (188, 2)
+Shape of combined_labels: (188,)
+Shape of combined_features_normalized_augmented: (191, 2)
+Shape of combined_features_unnormalized_augmented: (191, 2)
+Shape of combined_labels_augmented: (191,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.816 - sigma: 1.698842 - lengthscales: [0.120642, 0.146005] - cov constant: 0.29096 - mean constant: -1.447925 - noise: 0.086405
+Epoch 8000/20000 - Loss: 0.802 - sigma: 2.087788 - lengthscales: [0.132323, 0.162402] - cov constant: 0.307073 - mean constant: -1.762009 - noise: 0.08343
+Epoch 12000/20000 - Loss: 0.799 - sigma: 2.21469 - lengthscales: [0.135859, 0.167461] - cov constant: 0.328434 - mean constant: -1.85171 - noise: 0.083132
+Epoch 16000/20000 - Loss: 0.799 - sigma: 2.21717 - lengthscales: [0.135925, 0.167559] - cov constant: 0.328845 - mean constant: -1.853432 - noise: 0.083127
+Epoch 20000/20000 - Loss: 0.799 - sigma: 2.21717 - lengthscales: [0.135925, 0.167559] - cov constant: 0.328845 - mean constant: -1.853432 - noise: 0.083127
+Previous iterations found. Saving the model to iteration_78
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 78 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6523492677812042
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  8.259483171472624 mol/m^3  |  8.612346616292417 mol/m^3   |
+|     DL    | 1.579605991814003e-10 m^2/s | 1.5795256103074016e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 79 parameters
+=======================================================================
+(Iteration 79) There is no TDS_measurements.npy for iteration 79
+(Iteration 79) Program starts running the simulations of iteration 79
+(Iteration 79) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 79 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 158 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 79
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (158, 2)
+Shape of iteration_features_unnormalized: (158, 2)
+Shape of iteration_labels: (158,)
+Shape of combined_features_normalized: (190, 2)
+Shape of combined_features_unnormalized: (190, 2)
+Shape of combined_labels: (190,)
+Shape of combined_features_normalized_augmented: (193, 2)
+Shape of combined_features_unnormalized_augmented: (193, 2)
+Shape of combined_labels_augmented: (193,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.807 - sigma: 1.698731 - lengthscales: [0.119817, 0.144295] - cov constant: 0.294342 - mean constant: -1.445308 - noise: 0.084468
+Epoch 8000/20000 - Loss: 0.793 - sigma: 2.087974 - lengthscales: [0.131478, 0.160547] - cov constant: 0.308051 - mean constant: -1.757977 - noise: 0.08155
+Epoch 12000/20000 - Loss: 0.790 - sigma: 2.215887 - lengthscales: [0.13505, 0.165503] - cov constant: 0.329534 - mean constant: -1.847158 - noise: 0.081247
+Epoch 16000/20000 - Loss: 0.790 - sigma: 2.218461 - lengthscales: [0.135119, 0.165602] - cov constant: 0.329959 - mean constant: -1.848917 - noise: 0.081241
+Epoch 20000/20000 - Loss: 0.790 - sigma: 2.218461 - lengthscales: [0.135119, 0.165602] - cov constant: 0.329959 - mean constant: -1.848917 - noise: 0.081241
+Previous iterations found. Saving the model to iteration_79
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 79 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6648004658322373
+
++-----------+------------------------------+----------------------------+
+| Parameter |         Candidate 1          |        Candidate 2         |
++-----------+------------------------------+----------------------------+
+| surface_H |  8.291480686439382 mol/m^3   | 6.219637567781447 mol/m^3  |
+|     DL    | 1.5639602747086606e-10 m^2/s | 9.01676312714839e-10 m^2/s |
++-----------+------------------------------+----------------------------+
+
+Saving iteration 80 parameters
+=======================================================================
+(Iteration 80) There is no TDS_measurements.npy for iteration 80
+(Iteration 80) Program starts running the simulations of iteration 80
+(Iteration 80) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 80 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 160 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 80
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (160, 2)
+Shape of iteration_features_unnormalized: (160, 2)
+Shape of iteration_labels: (160,)
+Shape of combined_features_normalized: (192, 2)
+Shape of combined_features_unnormalized: (192, 2)
+Shape of combined_labels: (192,)
+Shape of combined_features_normalized_augmented: (195, 2)
+Shape of combined_features_unnormalized_augmented: (195, 2)
+Shape of combined_labels_augmented: (195,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.807 - sigma: 1.69983 - lengthscales: [0.121039, 0.147433] - cov constant: 0.299888 - mean constant: -1.469612 - noise: 0.08753
+Epoch 8000/20000 - Loss: 0.793 - sigma: 2.097369 - lengthscales: [0.127114, 0.179558] - cov constant: 0.318778 - mean constant: -1.842437 - noise: 0.086168
+Epoch 12000/20000 - Loss: 0.772 - sigma: 2.364407 - lengthscales: [0.104975, 0.29582] - cov constant: 0.38077 - mean constant: -2.205722 - noise: 0.089378
+Epoch 16000/20000 - Loss: 0.772 - sigma: 2.388091 - lengthscales: [0.105397, 0.296925] - cov constant: 0.384725 - mean constant: -2.219601 - noise: 0.089232
+Epoch 20000/20000 - Loss: 0.772 - sigma: 2.388096 - lengthscales: [0.105397, 0.296925] - cov constant: 0.384726 - mean constant: -2.219604 - noise: 0.089232
+Previous iterations found. Saving the model to iteration_80
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 80 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.42131305767822813
+
++-----------+-----------------------------+----------------------------+
+| Parameter |         Candidate 1         |        Candidate 2         |
++-----------+-----------------------------+----------------------------+
+| surface_H |  9.076558223758523 mol/m^3  | 8.484103384090492 mol/m^3  |
+|     DL    | 4.950237439529103e-10 m^2/s | 2.37848288042767e-10 m^2/s |
++-----------+-----------------------------+----------------------------+
+
+Saving iteration 81 parameters
+=======================================================================
+(Iteration 81) There is no TDS_measurements.npy for iteration 81
+(Iteration 81) Program starts running the simulations of iteration 81
+(Iteration 81) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 81 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 162 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 81
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (162, 2)
+Shape of iteration_features_unnormalized: (162, 2)
+Shape of iteration_labels: (162,)
+Shape of combined_features_normalized: (194, 2)
+Shape of combined_features_unnormalized: (194, 2)
+Shape of combined_labels: (194,)
+Shape of combined_features_normalized_augmented: (197, 2)
+Shape of combined_features_unnormalized_augmented: (197, 2)
+Shape of combined_labels_augmented: (197,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.804 - sigma: 1.703602 - lengthscales: [0.119489, 0.152233] - cov constant: 0.305158 - mean constant: -1.494957 - noise: 0.087829
+Epoch 8000/20000 - Loss: 0.789 - sigma: 2.104197 - lengthscales: [0.129638, 0.172441] - cov constant: 0.320734 - mean constant: -1.833505 - noise: 0.084807
+Epoch 12000/20000 - Loss: 0.785 - sigma: 2.250844 - lengthscales: [0.13272, 0.180085] - cov constant: 0.34619 - mean constant: -1.94276 - noise: 0.084497
+Epoch 16000/20000 - Loss: 0.785 - sigma: 2.25586 - lengthscales: [0.132792, 0.180395] - cov constant: 0.347055 - mean constant: -1.946576 - noise: 0.08449
+Epoch 20000/20000 - Loss: 0.785 - sigma: 2.25586 - lengthscales: [0.132792, 0.180395] - cov constant: 0.347055 - mean constant: -1.946576 - noise: 0.08449
+Previous iterations found. Saving the model to iteration_81
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 81 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6695086134372021
+
++-----------+------------------------------+------------------------------+
+| Parameter |         Candidate 1          |         Candidate 2          |
++-----------+------------------------------+------------------------------+
+| surface_H |  7.4739484092293385 mol/m^3  |   8.5143939314672 mol/m^3    |
+|     DL    | 3.8242156613368345e-10 m^2/s | 1.6885457714266776e-10 m^2/s |
++-----------+------------------------------+------------------------------+
+
+Saving iteration 82 parameters
+=======================================================================
+(Iteration 82) There is no TDS_measurements.npy for iteration 82
+(Iteration 82) Program starts running the simulations of iteration 82
+(Iteration 82) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 82 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 164 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 82
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (164, 2)
+Shape of iteration_features_unnormalized: (164, 2)
+Shape of iteration_labels: (164,)
+Shape of combined_features_normalized: (196, 2)
+Shape of combined_features_unnormalized: (196, 2)
+Shape of combined_labels: (196,)
+Shape of combined_features_normalized_augmented: (199, 2)
+Shape of combined_features_unnormalized_augmented: (199, 2)
+Shape of combined_labels_augmented: (199,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.798 - sigma: 1.70474 - lengthscales: [0.118905, 0.1507] - cov constant: 0.308713 - mean constant: -1.494073 - noise: 0.086346
+Epoch 8000/20000 - Loss: 0.783 - sigma: 2.106085 - lengthscales: [0.12901, 0.170837] - cov constant: 0.322257 - mean constant: -1.832226 - noise: 0.083389
+Epoch 12000/20000 - Loss: 0.779 - sigma: 2.253894 - lengthscales: [0.132245, 0.178126] - cov constant: 0.347834 - mean constant: -1.940372 - noise: 0.083063
+Epoch 16000/20000 - Loss: 0.779 - sigma: 2.25904 - lengthscales: [0.132341, 0.178397] - cov constant: 0.348713 - mean constant: -1.944112 - noise: 0.083054
+Epoch 20000/20000 - Loss: 0.779 - sigma: 2.25904 - lengthscales: [0.132341, 0.178397] - cov constant: 0.348713 - mean constant: -1.944112 - noise: 0.083054
+Previous iterations found. Saving the model to iteration_82
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 82 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6746196488472582
+
++-----------+------------------------------+-----------------------------+
+| Parameter |         Candidate 1          |         Candidate 2         |
++-----------+------------------------------+-----------------------------+
+| surface_H |  8.256186138027585 mol/m^3   |   8.07596531337888 mol/m^3  |
+|     DL    | 1.6587225475163453e-10 m^2/s | 7.146790326758959e-10 m^2/s |
++-----------+------------------------------+-----------------------------+
+
+Saving iteration 83 parameters
+=======================================================================
+(Iteration 83) There is no TDS_measurements.npy for iteration 83
+(Iteration 83) Program starts running the simulations of iteration 83
+(Iteration 83) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 83 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 166 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 83
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (166, 2)
+Shape of iteration_features_unnormalized: (166, 2)
+Shape of iteration_labels: (166,)
+Shape of combined_features_normalized: (198, 2)
+Shape of combined_features_unnormalized: (198, 2)
+Shape of combined_labels: (198,)
+Shape of combined_features_normalized_augmented: (201, 2)
+Shape of combined_features_unnormalized_augmented: (201, 2)
+Shape of combined_labels_augmented: (201,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.792 - sigma: 1.705613 - lengthscales: [0.118178, 0.149009] - cov constant: 0.311833 - mean constant: -1.490988 - noise: 0.084801
+Epoch 8000/20000 - Loss: 0.776 - sigma: 2.107207 - lengthscales: [0.128104, 0.169358] - cov constant: 0.32351 - mean constant: -1.829285 - noise: 0.081957
+Epoch 12000/20000 - Loss: 0.772 - sigma: 2.256186 - lengthscales: [0.131252, 0.176781] - cov constant: 0.349298 - mean constant: -1.938142 - noise: 0.081646
+Epoch 16000/20000 - Loss: 0.772 - sigma: 2.261536 - lengthscales: [0.13135, 0.177062] - cov constant: 0.350213 - mean constant: -1.942017 - noise: 0.081637
+Epoch 20000/20000 - Loss: 0.772 - sigma: 2.261536 - lengthscales: [0.13135, 0.177062] - cov constant: 0.350213 - mean constant: -1.942017 - noise: 0.081637
+Previous iterations found. Saving the model to iteration_83
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 83 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6785311940478844
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  8.961291532806573 mol/m^3  |  8.695528925759566 mol/m^3   |
+|     DL    | 5.238627600486788e-10 m^2/s | 1.6174342898066976e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 84 parameters
+=======================================================================
+(Iteration 84) There is no TDS_measurements.npy for iteration 84
+(Iteration 84) Program starts running the simulations of iteration 84
+(Iteration 84) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 84 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 168 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 84
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (168, 2)
+Shape of iteration_features_unnormalized: (168, 2)
+Shape of iteration_labels: (168,)
+Shape of combined_features_normalized: (200, 2)
+Shape of combined_features_unnormalized: (200, 2)
+Shape of combined_labels: (200,)
+Shape of combined_features_normalized_augmented: (203, 2)
+Shape of combined_features_unnormalized_augmented: (203, 2)
+Shape of combined_labels_augmented: (203,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.787 - sigma: 1.706781 - lengthscales: [0.117714, 0.147501] - cov constant: 0.314978 - mean constant: -1.488934 - noise: 0.083521
+Epoch 8000/20000 - Loss: 0.771 - sigma: 2.109696 - lengthscales: [0.127603, 0.168088] - cov constant: 0.325315 - mean constant: -1.828496 - noise: 0.080806
+Epoch 12000/20000 - Loss: 0.767 - sigma: 2.261214 - lengthscales: [0.130771, 0.175535] - cov constant: 0.351517 - mean constant: -1.938284 - noise: 0.080485
+Epoch 16000/20000 - Loss: 0.767 - sigma: 2.26696 - lengthscales: [0.130881, 0.17582] - cov constant: 0.352494 - mean constant: -1.942359 - noise: 0.080475
+Epoch 20000/20000 - Loss: 0.767 - sigma: 2.26696 - lengthscales: [0.130881, 0.17582] - cov constant: 0.352494 - mean constant: -1.942359 - noise: 0.080475
+Previous iterations found. Saving the model to iteration_84
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 84 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6694772906689727
+
++-----------+------------------------------+-----------------------------+
+| Parameter |         Candidate 1          |         Candidate 2         |
++-----------+------------------------------+-----------------------------+
+| surface_H |  8.117522596285946 mol/m^3   |  8.431939227038061 mol/m^3  |
+|     DL    | 1.6414843721706346e-10 m^2/s | 1.642167067034863e-10 m^2/s |
++-----------+------------------------------+-----------------------------+
+
+Saving iteration 85 parameters
+=======================================================================
+(Iteration 85) There is no TDS_measurements.npy for iteration 85
+(Iteration 85) Program starts running the simulations of iteration 85
+(Iteration 85) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 85 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 170 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 85
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (170, 2)
+Shape of iteration_features_unnormalized: (170, 2)
+Shape of iteration_labels: (170,)
+Shape of combined_features_normalized: (202, 2)
+Shape of combined_features_unnormalized: (202, 2)
+Shape of combined_labels: (202,)
+Shape of combined_features_normalized_augmented: (205, 2)
+Shape of combined_features_unnormalized_augmented: (205, 2)
+Shape of combined_labels_augmented: (205,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.779 - sigma: 1.706451 - lengthscales: [0.116988, 0.144895] - cov constant: 0.318042 - mean constant: -1.481828 - noise: 0.081567
+Epoch 8000/20000 - Loss: 0.763 - sigma: 2.108863 - lengthscales: [0.12706, 0.165634] - cov constant: 0.325971 - mean constant: -1.820786 - noise: 0.079107
+Epoch 12000/20000 - Loss: 0.759 - sigma: 2.261316 - lengthscales: [0.130267, 0.173117] - cov constant: 0.352393 - mean constant: -1.931033 - noise: 0.078843
+Epoch 16000/20000 - Loss: 0.759 - sigma: 2.267169 - lengthscales: [0.130383, 0.173399] - cov constant: 0.353388 - mean constant: -1.935143 - noise: 0.078833
+Epoch 20000/20000 - Loss: 0.759 - sigma: 2.267169 - lengthscales: [0.130383, 0.173399] - cov constant: 0.353388 - mean constant: -1.935143 - noise: 0.078833
+Previous iterations found. Saving the model to iteration_85
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 85 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6718247822567737
+
++-----------+------------------------------+-----------------------------+
+| Parameter |         Candidate 1          |         Candidate 2         |
++-----------+------------------------------+-----------------------------+
+| surface_H |  8.825358298867283 mol/m^3   |  8.208881134660027 mol/m^3  |
+|     DL    | 1.5274550390263793e-10 m^2/s | 1.614718833285035e-10 m^2/s |
++-----------+------------------------------+-----------------------------+
+
+Saving iteration 86 parameters
+=======================================================================
+(Iteration 86) There is no TDS_measurements.npy for iteration 86
+(Iteration 86) Program starts running the simulations of iteration 86
+(Iteration 86) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 86 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 172 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 86
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (172, 2)
+Shape of iteration_features_unnormalized: (172, 2)
+Shape of iteration_labels: (172,)
+Shape of combined_features_normalized: (204, 2)
+Shape of combined_features_unnormalized: (204, 2)
+Shape of combined_labels: (204,)
+Shape of combined_features_normalized_augmented: (207, 2)
+Shape of combined_features_unnormalized_augmented: (207, 2)
+Shape of combined_labels_augmented: (207,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.771 - sigma: 1.706277 - lengthscales: [0.116388, 0.14174] - cov constant: 0.320906 - mean constant: -1.472821 - noise: 0.079572
+Epoch 8000/20000 - Loss: 0.756 - sigma: 2.107458 - lengthscales: [0.126739, 0.162615] - cov constant: 0.326323 - mean constant: -1.809871 - noise: 0.077392
+Epoch 12000/20000 - Loss: 0.752 - sigma: 2.261352 - lengthscales: [0.12998, 0.170365] - cov constant: 0.35317 - mean constant: -1.922064 - noise: 0.077245
+Epoch 16000/20000 - Loss: 0.751 - sigma: 2.267348 - lengthscales: [0.1301, 0.170654] - cov constant: 0.354192 - mean constant: -1.926271 - noise: 0.077238
+Epoch 20000/20000 - Loss: 0.751 - sigma: 2.267348 - lengthscales: [0.1301, 0.170654] - cov constant: 0.354192 - mean constant: -1.926271 - noise: 0.077238
+Previous iterations found. Saving the model to iteration_86
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 86 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6816837551081915
+
++-----------+------------------------------+-----------------------------+
+| Parameter |         Candidate 1          |         Candidate 2         |
++-----------+------------------------------+-----------------------------+
+| surface_H |  8.259052165230964 mol/m^3   |  7.932557565300023 mol/m^3  |
+|     DL    | 1.5949610857713952e-10 m^2/s | 6.668896192867962e-10 m^2/s |
++-----------+------------------------------+-----------------------------+
+
+Saving iteration 87 parameters
+=======================================================================
+(Iteration 87) There is no TDS_measurements.npy for iteration 87
+(Iteration 87) Program starts running the simulations of iteration 87
+(Iteration 87) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 87 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 174 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 87
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (174, 2)
+Shape of iteration_features_unnormalized: (174, 2)
+Shape of iteration_labels: (174,)
+Shape of combined_features_normalized: (206, 2)
+Shape of combined_features_unnormalized: (206, 2)
+Shape of combined_labels: (206,)
+Shape of combined_features_normalized_augmented: (209, 2)
+Shape of combined_features_unnormalized_augmented: (209, 2)
+Shape of combined_labels_augmented: (209,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.764 - sigma: 1.706503 - lengthscales: [0.115607, 0.138055] - cov constant: 0.32324 - mean constant: -1.460541 - noise: 0.077514
+Epoch 8000/20000 - Loss: 0.750 - sigma: 2.066522 - lengthscales: [0.126195, 0.150151] - cov constant: 0.312401 - mean constant: -1.714877 - noise: 0.073256
+Epoch 12000/20000 - Loss: 0.745 - sigma: 2.260159 - lengthscales: [0.12947, 0.167555] - cov constant: 0.353513 - mean constant: -1.910416 - noise: 0.075717
+Epoch 16000/20000 - Loss: 0.745 - sigma: 2.267451 - lengthscales: [0.129613, 0.167922] - cov constant: 0.354764 - mean constant: -1.915613 - noise: 0.075715
+Epoch 20000/20000 - Loss: 0.745 - sigma: 2.267451 - lengthscales: [0.129613, 0.167922] - cov constant: 0.354764 - mean constant: -1.915613 - noise: 0.075715
+Previous iterations found. Saving the model to iteration_87
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 87 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6738188459028269
+
++-----------+------------------------------+------------------------------+
+| Parameter |         Candidate 1          |         Candidate 2          |
++-----------+------------------------------+------------------------------+
+| surface_H |  8.403019973478163 mol/m^3   |  8.118320338531547 mol/m^3   |
+|     DL    | 1.5713187693131557e-10 m^2/s | 1.5867528966077318e-10 m^2/s |
++-----------+------------------------------+------------------------------+
+
+Saving iteration 88 parameters
+=======================================================================
+(Iteration 88) There is no TDS_measurements.npy for iteration 88
+(Iteration 88) Program starts running the simulations of iteration 88
+(Iteration 88) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 88 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 176 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 88
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (176, 2)
+Shape of iteration_features_unnormalized: (176, 2)
+Shape of iteration_labels: (176,)
+Shape of combined_features_normalized: (208, 2)
+Shape of combined_features_unnormalized: (208, 2)
+Shape of combined_labels: (208,)
+Shape of combined_features_normalized_augmented: (211, 2)
+Shape of combined_features_unnormalized_augmented: (211, 2)
+Shape of combined_labels_augmented: (211,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.756 - sigma: 1.705885 - lengthscales: [0.114867, 0.133557] - cov constant: 0.325661 - mean constant: -1.445708 - noise: 0.075155
+Epoch 8000/20000 - Loss: 0.742 - sigma: 2.009474 - lengthscales: [0.117307, 0.114797] - cov constant: 0.28175 - mean constant: -1.437426 - noise: 0.056605
+Epoch 12000/20000 - Loss: 0.737 - sigma: 2.240935 - lengthscales: [0.128922, 0.162994] - cov constant: 0.350439 - mean constant: -1.88238 - noise: 0.073906
+Epoch 16000/20000 - Loss: 0.737 - sigma: 2.265591 - lengthscales: [0.129389, 0.164392] - cov constant: 0.354746 - mean constant: -1.900856 - noise: 0.073947
+Epoch 20000/20000 - Loss: 0.737 - sigma: 2.265591 - lengthscales: [0.129389, 0.164392] - cov constant: 0.354746 - mean constant: -1.900857 - noise: 0.073947
+Previous iterations found. Saving the model to iteration_88
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 88 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.6730265766731929
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  8.136258672337316 mol/m^3  |  8.413008056713595 mol/m^3   |
+|     DL    | 1.561519792970906e-10 m^2/s | 1.5443115968576923e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 89 parameters
+=======================================================================
+(Iteration 89) There is no TDS_measurements.npy for iteration 89
+(Iteration 89) Program starts running the simulations of iteration 89
+(Iteration 89) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 89 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 178 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 89
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (178, 2)
+Shape of iteration_features_unnormalized: (178, 2)
+Shape of iteration_labels: (178,)
+Shape of combined_features_normalized: (210, 2)
+Shape of combined_features_unnormalized: (210, 2)
+Shape of combined_labels: (210,)
+Shape of combined_features_normalized_augmented: (213, 2)
+Shape of combined_features_unnormalized_augmented: (213, 2)
+Shape of combined_labels_augmented: (213,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.748 - sigma: 1.705124 - lengthscales: [0.113973, 0.128031] - cov constant: 0.327706 - mean constant: -1.426066 - noise: 0.0725
+Epoch 8000/20000 - Loss: 0.733 - sigma: 1.99676 - lengthscales: [0.115263, 0.111453] - cov constant: 0.279041 - mean constant: -1.405736 - noise: 0.054034
+Epoch 12000/20000 - Loss: 0.731 - sigma: 2.098363 - lengthscales: [0.119202, 0.116615] - cov constant: 0.297013 - mean constant: -1.492512 - noise: 0.055395
+Epoch 16000/20000 - Loss: 0.731 - sigma: 2.099994 - lengthscales: [0.119271, 0.116705] - cov constant: 0.29731 - mean constant: -1.493983 - noise: 0.055423
+Epoch 20000/20000 - Loss: 0.731 - sigma: 2.099994 - lengthscales: [0.119271, 0.116705] - cov constant: 0.29731 - mean constant: -1.493983 - noise: 0.055423
+Previous iterations found. Saving the model to iteration_89
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 89 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5357334500525466
+
++-----------+------------------------------+------------------------------+
+| Parameter |         Candidate 1          |         Candidate 2          |
++-----------+------------------------------+------------------------------+
+| surface_H |  8.954397626691842 mol/m^3   |  8.799818209823098 mol/m^3   |
+|     DL    | 1.0827770508225369e-10 m^2/s | 1.1576365886646708e-10 m^2/s |
++-----------+------------------------------+------------------------------+
+
+Saving iteration 90 parameters
+=======================================================================
+(Iteration 90) There is no TDS_measurements.npy for iteration 90
+(Iteration 90) Program starts running the simulations of iteration 90
+(Iteration 90) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 90 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 180 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 90
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (180, 2)
+Shape of iteration_features_unnormalized: (180, 2)
+Shape of iteration_labels: (180,)
+Shape of combined_features_normalized: (212, 2)
+Shape of combined_features_unnormalized: (212, 2)
+Shape of combined_labels: (212,)
+Shape of combined_features_normalized_augmented: (215, 2)
+Shape of combined_features_unnormalized_augmented: (215, 2)
+Shape of combined_labels_augmented: (215,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.736 - sigma: 1.699329 - lengthscales: [0.11089, 0.109013] - cov constant: 0.322141 - mean constant: -1.310378 - noise: 0.063747
+Epoch 8000/20000 - Loss: 0.724 - sigma: 1.994932 - lengthscales: [0.114569, 0.110171] - cov constant: 0.279731 - mean constant: -1.40046 - noise: 0.052538
+Epoch 12000/20000 - Loss: 0.723 - sigma: 2.088202 - lengthscales: [0.117745, 0.11405] - cov constant: 0.295357 - mean constant: -1.471088 - noise: 0.05323
+Epoch 16000/20000 - Loss: 0.723 - sigma: 2.088951 - lengthscales: [0.117771, 0.114081] - cov constant: 0.295482 - mean constant: -1.471655 - noise: 0.053236
+Epoch 20000/20000 - Loss: 0.723 - sigma: 2.088951 - lengthscales: [0.117771, 0.114081] - cov constant: 0.295482 - mean constant: -1.471655 - noise: 0.053236
+Previous iterations found. Saving the model to iteration_90
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 90 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5007333844946432
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  5.684164920650778 mol/m^3  |  8.895201476368875 mol/m^3   |
+|     DL    | 8.379812929722482e-10 m^2/s | 1.1011808273279216e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 91 parameters
+=======================================================================
+(Iteration 91) There is no TDS_measurements.npy for iteration 91
+(Iteration 91) Program starts running the simulations of iteration 91
+(Iteration 91) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 91 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 182 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 91
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (182, 2)
+Shape of iteration_features_unnormalized: (182, 2)
+Shape of iteration_labels: (182,)
+Shape of combined_features_normalized: (214, 2)
+Shape of combined_features_unnormalized: (214, 2)
+Shape of combined_labels: (214,)
+Shape of combined_features_normalized_augmented: (217, 2)
+Shape of combined_features_unnormalized_augmented: (217, 2)
+Shape of combined_labels_augmented: (217,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.736 - sigma: 1.700447 - lengthscales: [0.111279, 0.113464] - cov constant: 0.321573 - mean constant: -1.349231 - noise: 0.064571
+Epoch 8000/20000 - Loss: 0.724 - sigma: 2.021612 - lengthscales: [0.118225, 0.117981] - cov constant: 0.292588 - mean constant: -1.520775 - noise: 0.056815
+Epoch 12000/20000 - Loss: 0.720 - sigma: 2.193657 - lengthscales: [0.126972, 0.131781] - cov constant: 0.329176 - mean constant: -1.703307 - noise: 0.061843
+Epoch 16000/20000 - Loss: 0.720 - sigma: 2.201612 - lengthscales: [0.12733, 0.132295] - cov constant: 0.330748 - mean constant: -1.710359 - noise: 0.062003
+Epoch 20000/20000 - Loss: 0.720 - sigma: 2.201612 - lengthscales: [0.12733, 0.132295] - cov constant: 0.330748 - mean constant: -1.710359 - noise: 0.062003
+Previous iterations found. Saving the model to iteration_91
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 91 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5709968099890903
+
++-----------+----------------------------+------------------------------+
+| Parameter |        Candidate 1         |         Candidate 2          |
++-----------+----------------------------+------------------------------+
+| surface_H |       10.35 mol/m^3        |  8.864434971948938 mol/m^3   |
+|     DL    | 8.97845427901733e-11 m^2/s | 1.1837129250958267e-10 m^2/s |
++-----------+----------------------------+------------------------------+
+
+Saving iteration 92 parameters
+=======================================================================
+(Iteration 92) There is no TDS_measurements.npy for iteration 92
+(Iteration 92) Program starts running the simulations of iteration 92
+(Iteration 92) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 92 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 184 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 92
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (184, 2)
+Shape of iteration_features_unnormalized: (184, 2)
+Shape of iteration_labels: (184,)
+Shape of combined_features_normalized: (216, 2)
+Shape of combined_features_unnormalized: (216, 2)
+Shape of combined_labels: (216,)
+Shape of combined_features_normalized_augmented: (219, 2)
+Shape of combined_features_unnormalized_augmented: (219, 2)
+Shape of combined_labels_augmented: (219,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.733 - sigma: 1.700396 - lengthscales: [0.1114, 0.113275] - cov constant: 0.321104 - mean constant: -1.359995 - noise: 0.064185
+Epoch 8000/20000 - Loss: 0.721 - sigma: 2.02137 - lengthscales: [0.118511, 0.118444] - cov constant: 0.295106 - mean constant: -1.542582 - noise: 0.056922
+Epoch 12000/20000 - Loss: 0.717 - sigma: 2.197486 - lengthscales: [0.127466, 0.132699] - cov constant: 0.33285 - mean constant: -1.729083 - noise: 0.062082
+Epoch 16000/20000 - Loss: 0.717 - sigma: 2.204799 - lengthscales: [0.12778, 0.133133] - cov constant: 0.334262 - mean constant: -1.735235 - noise: 0.062207
+Epoch 20000/20000 - Loss: 0.717 - sigma: 2.204799 - lengthscales: [0.12778, 0.133133] - cov constant: 0.334262 - mean constant: -1.735235 - noise: 0.062207
+Previous iterations found. Saving the model to iteration_92
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 92 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5768365913411245
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  9.822228302216853 mol/m^3  |  8.862264261167915 mol/m^3   |
+|     DL    | 2.357979517758386e-10 m^2/s | 1.1878733485880175e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 93 parameters
+=======================================================================
+(Iteration 93) There is no TDS_measurements.npy for iteration 93
+(Iteration 93) Program starts running the simulations of iteration 93
+(Iteration 93) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 93 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 186 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 93
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (186, 2)
+Shape of iteration_features_unnormalized: (186, 2)
+Shape of iteration_labels: (186,)
+Shape of combined_features_normalized: (218, 2)
+Shape of combined_features_unnormalized: (218, 2)
+Shape of combined_labels: (218,)
+Shape of combined_features_normalized_augmented: (221, 2)
+Shape of combined_features_unnormalized_augmented: (221, 2)
+Shape of combined_labels_augmented: (221,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.727 - sigma: 1.699451 - lengthscales: [0.110679, 0.110248] - cov constant: 0.322499 - mean constant: -1.342827 - noise: 0.062246
+Epoch 8000/20000 - Loss: 0.715 - sigma: 2.024246 - lengthscales: [0.11798, 0.117236] - cov constant: 0.296642 - mean constant: -1.539086 - noise: 0.055748
+Epoch 12000/20000 - Loss: 0.712 - sigma: 2.175191 - lengthscales: [0.124858, 0.126546] - cov constant: 0.326279 - mean constant: -1.681289 - noise: 0.058756
+Epoch 16000/20000 - Loss: 0.712 - sigma: 2.180377 - lengthscales: [0.125089, 0.126841] - cov constant: 0.327275 - mean constant: -1.685826 - noise: 0.058848
+Epoch 20000/20000 - Loss: 0.712 - sigma: 2.180377 - lengthscales: [0.125089, 0.126841] - cov constant: 0.327275 - mean constant: -1.685826 - noise: 0.058848
+Previous iterations found. Saving the model to iteration_93
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 93 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5637316794900344
+
++-----------+------------------------------+----------------------------+
+| Parameter |         Candidate 1          |        Candidate 2         |
++-----------+------------------------------+----------------------------+
+| surface_H |  8.871147244499529 mol/m^3   | 7.779932693853603 mol/m^3  |
+|     DL    | 1.1552207648525879e-10 m^2/s | 6.95961018348171e-10 m^2/s |
++-----------+------------------------------+----------------------------+
+
+Saving iteration 94 parameters
+=======================================================================
+(Iteration 94) There is no TDS_measurements.npy for iteration 94
+(Iteration 94) Program starts running the simulations of iteration 94
+(Iteration 94) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 94 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 188 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 94
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (188, 2)
+Shape of iteration_features_unnormalized: (188, 2)
+Shape of iteration_labels: (188,)
+Shape of combined_features_normalized: (220, 2)
+Shape of combined_features_unnormalized: (220, 2)
+Shape of combined_labels: (220,)
+Shape of combined_features_normalized_augmented: (223, 2)
+Shape of combined_features_unnormalized_augmented: (223, 2)
+Shape of combined_labels_augmented: (223,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.719 - sigma: 1.698799 - lengthscales: [0.109458, 0.107667] - cov constant: 0.324339 - mean constant: -1.328698 - noise: 0.060261
+Epoch 8000/20000 - Loss: 0.708 - sigma: 2.012688 - lengthscales: [0.116, 0.113872] - cov constant: 0.293953 - mean constant: -1.508982 - noise: 0.053396
+Epoch 12000/20000 - Loss: 0.705 - sigma: 2.149981 - lengthscales: [0.121708, 0.121721] - cov constant: 0.319917 - mean constant: -1.634872 - noise: 0.055682
+Epoch 16000/20000 - Loss: 0.705 - sigma: 2.153846 - lengthscales: [0.121874, 0.121938] - cov constant: 0.320648 - mean constant: -1.638324 - noise: 0.055748
+Epoch 20000/20000 - Loss: 0.705 - sigma: 2.153846 - lengthscales: [0.121874, 0.121938] - cov constant: 0.320648 - mean constant: -1.638324 - noise: 0.055748
+Previous iterations found. Saving the model to iteration_94
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 94 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5498821837377625
+
++-----------+------------------------------+-----------------------------+
+| Parameter |         Candidate 1          |         Candidate 2         |
++-----------+------------------------------+-----------------------------+
+| surface_H |  8.946311227525658 mol/m^3   |  8.801670419440011 mol/m^3  |
+|     DL    | 1.1011477466368734e-10 m^2/s | 1.166648567251253e-10 m^2/s |
++-----------+------------------------------+-----------------------------+
+
+Saving iteration 95 parameters
+=======================================================================
+(Iteration 95) There is no TDS_measurements.npy for iteration 95
+(Iteration 95) Program starts running the simulations of iteration 95
+(Iteration 95) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 95 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 190 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 95
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (190, 2)
+Shape of iteration_features_unnormalized: (190, 2)
+Shape of iteration_labels: (190,)
+Shape of combined_features_normalized: (222, 2)
+Shape of combined_features_unnormalized: (222, 2)
+Shape of combined_labels: (222,)
+Shape of combined_features_normalized_augmented: (225, 2)
+Shape of combined_features_unnormalized_augmented: (225, 2)
+Shape of combined_labels_augmented: (225,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.710 - sigma: 1.696984 - lengthscales: [0.108316, 0.104866] - cov constant: 0.325869 - mean constant: -1.312171 - noise: 0.058055
+Epoch 8000/20000 - Loss: 0.699 - sigma: 2.000494 - lengthscales: [0.114415, 0.110955] - cov constant: 0.29177 - mean constant: -1.483235 - noise: 0.051271
+Epoch 12000/20000 - Loss: 0.697 - sigma: 2.123957 - lengthscales: [0.119001, 0.117403] - cov constant: 0.314164 - mean constant: -1.591337 - noise: 0.052851
+Epoch 16000/20000 - Loss: 0.697 - sigma: 2.126321 - lengthscales: [0.119093, 0.117523] - cov constant: 0.314593 - mean constant: -1.593371 - noise: 0.052883
+Epoch 20000/20000 - Loss: 0.697 - sigma: 2.126321 - lengthscales: [0.119093, 0.117523] - cov constant: 0.314593 - mean constant: -1.593371 - noise: 0.052883
+Previous iterations found. Saving the model to iteration_95
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 95 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5474571539192897
+
++-----------+------------------------------+----------------------------+
+| Parameter |         Candidate 1          |        Candidate 2         |
++-----------+------------------------------+----------------------------+
+| surface_H |  8.884122714549852 mol/m^3   |  8.11278524368618 mol/m^3  |
+|     DL    | 1.1169295980964998e-10 m^2/s | 2.94257133307707e-10 m^2/s |
++-----------+------------------------------+----------------------------+
+
+Saving iteration 96 parameters
+=======================================================================
+(Iteration 96) There is no TDS_measurements.npy for iteration 96
+(Iteration 96) Program starts running the simulations of iteration 96
+(Iteration 96) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+Iteration 96 simulations have completed
+=======================================================================
+Start concatenating the iterations of predictions together
+Finish concatenating the iterations of predictions together
+Number of iteration simulations: 192 TDS measurements
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 96
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (192, 2)
+Shape of iteration_features_unnormalized: (192, 2)
+Shape of iteration_labels: (192,)
+Shape of combined_features_normalized: (224, 2)
+Shape of combined_features_unnormalized: (224, 2)
+Shape of combined_labels: (224,)
+Shape of combined_features_normalized_augmented: (227, 2)
+Shape of combined_features_unnormalized_augmented: (227, 2)
+Shape of combined_labels_augmented: (227,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+
+Epoch 4000/20000 - Loss: 0.704 - sigma: 1.699402 - lengthscales: [0.108117, 0.105617] - cov constant: 0.329535 - mean constant: -1.322938 - noise: 0.057505
+Epoch 8000/20000 - Loss: 0.692 - sigma: 2.019667 - lengthscales: [0.114936, 0.112766] - cov constant: 0.297865 - mean constant: -1.514873 - noise: 0.051268
+Epoch 12000/20000 - Loss: 0.690 - sigma: 2.143631 - lengthscales: [0.119416, 0.118736] - cov constant: 0.320046 - mean constant: -1.617922 - noise: 0.052632
+Epoch 16000/20000 - Loss: 0.690 - sigma: 2.145969 - lengthscales: [0.119503, 0.118845] - cov constant: 0.320461 - mean constant: -1.619815 - noise: 0.052658
+Epoch 20000/20000 - Loss: 0.690 - sigma: 2.145969 - lengthscales: [0.119503, 0.118845] - cov constant: 0.320461 - mean constant: -1.619815 - noise: 0.052658
+Previous iterations found. Saving the model to iteration_96
+Initial stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 6
+Best sim loss: 0.6109882050000002
+Iteration 96 stop condition diagnostics:
+Stop condition is satisfied: False
+Satisfied sim index: None
+Best sim index: 29
+Best sim loss: 0.48529977749999986
+
+======================================
+= Stage 6: Run iterative simulations =
+======================================
+
+
+############################################################
+
+Bayesian Optimization has found 2 candidates
+The acquisition values are -0.5489272047055667
+
++-----------+-----------------------------+------------------------------+
+| Parameter |         Candidate 1         |         Candidate 2          |
++-----------+-----------------------------+------------------------------+
+| surface_H |  9.054897427137439 mol/m^3  |  8.887427690358527 mol/m^3   |
+|     DL    | 2.184217069264786e-10 m^2/s | 1.1175238312987094e-10 m^2/s |
++-----------+-----------------------------+------------------------------+
+
+Saving iteration 97 parameters
+=======================================================================
+(Iteration 97) There is no TDS_measurements.npy for iteration 97
+(Iteration 97) Program starts running the simulations of iteration 97
+(Iteration 97) The prediction indices first and last values are 1 and 2
+Number of called subprocesses required: 2
+Iteration simulations for the parameters have finished
+
+START RUNNING FROM *** 2024-11-18 20:17:21 ***
+
+==========================================
+= Stage 1: Loading configs and all paths =
+==========================================
+
+Welcome to Abaqus Seq2Seq flow curve calibration project
+
+The configurations you have chosen: 
+
++--------------------------+-------------------------------------------------------------------------------+
+|      Global Configs      |                                  User choice                                  |
++--------------------------+-------------------------------------------------------------------------------+
+|       PROJECT_PATH       | C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization |
+|         LOG_PATH         |                               log/CP1000_RD_20C                               |
+|  RESULTS_INIT_DATA_PATH  |                       results_initial_data/CP1000_RD_20C                      |
+| RESULTS_INIT_COMMON_PATH |                      results_initial_common/CP1000_RD_20C                     |
+|  RESULTS_ITER_DATA_PATH  |                      results_iteration_data/CP1000_RD_20C                     |
+| RESULTS_ITER_COMMON_PATH |                     results_iteration_common/CP1000_RD_20C                    |
+|       SCRIPTS_PATH       |                             scripts/CP1000_RD_20C                             |
+|      SIMS_INIT_PATH      |                           sims_initial/CP1000_RD_20C                          |
+|      SIMS_ITER_PATH      |                          sims_iteration/CP1000_RD_20C                         |
+|       TARGETS_PATH       |                             targets/CP1000_RD_20C                             |
+|      TEMPLATES_PATH      |                            templates/CP1000_RD_20C                            |
+|       MODELS_PATH        |                              models/CP1000_RD_20C                             |
+|    TRAINING_DATA_PATH    |                          training_data/CP1000_RD_20C                          |
++--------------------------+-------------------------------------------------------------------------------+
+
+The root path of your project folder is
+
+C:\LocalUserData\User-data\nguyenb5\Abaqus-TDS-Hydrogen-Bayesian-Optimization
+
+==================================
+= Stage 2: Preparing common data =
+==================================
+
+
+The initial sampled parameters exist. Loading the sampled parameters
+The first sampled parameter set is
+{'surface_H': 5.6, 'DL': 1e-11}
+The number of sampled parameters: 32
+
+TDS measurement 1: 
+{'time': 120, 'C_wtppm': 0.714, 'C_mol': 5.597}
+
+TDS measurement 2: 
+{'time': 600, 'C_wtppm': 0.8, 'C_mol': 6.271}
+
+TDS measurement 3: 
+{'time': 1800, 'C_wtppm': 1.143, 'C_mol': 8.959}
+
+TDS measurement 4: 
+{'time': 7200, 'C_wtppm': 1.32, 'C_mol': 10.347}
+
+Saving the TDS result
+
+========================================
+= Stage 3: Running initial simulations =
+========================================
+
+Number of samples: 32
+Max concurrent samples: 2
+Number of batches: 16
+=======================================================================
+TDS_measurements.npy already exist.
+
+===================================
+= Stage 4: Prepare simulation data =
+====================================
+
+Shape of initial_features_normalized: (32, 2)
+Shape of initial_features_unnormalized: (32, 2)
+Shape of initial_labels: (32,)
+There is surface_H in the param_config
+Calculating the known loss when H_surface = 0
+Known loss: 7.7935
+Shape of initial_features_normalized_augmented: (35, 2)
+Shape of initial_features_unnormalized_augmented: (35, 2)
+Shape of initial_labels_augmented: (35,)
+The current iteration index is 96
+Combining the initial and iteration data into combined data
+Loading the iteration TDS measurements
+Shape of iteration_features_normalized: (192, 2)
+Shape of iteration_features_unnormalized: (192, 2)
+Shape of iteration_labels: (192,)
+Shape of combined_features_normalized: (224, 2)
+Shape of combined_features_unnormalized: (224, 2)
+Shape of combined_labels: (224,)
+Shape of combined_features_normalized_augmented: (227, 2)
+Shape of combined_features_unnormalized_augmented: (227, 2)
+Shape of combined_labels_augmented: (227,)
+
+===========================================
+= Stage 5: Train Gaussian Process model   =
+===========================================
+

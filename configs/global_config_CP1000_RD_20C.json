@@ -64,7 +64,7 @@
     },
 
     "optimization_config": {
-        "chosen_acq": "qExpectedImprovement",
+        "chosen_acq": "qUpperConfidenceBound",
         "chosen_sampler": "SobolQMCNormalSampler",
         "sample_shape": 2048,
         "return_best_only": true,
@@ -78,14 +78,14 @@
         },
 
         "qExpectedImprovement": {
-            "eta": 0.00001
+            "eta": 0.001
         },
         "qProbabilityOfImprovement": {
             "eta": 0.00001,
             "tau": 0.00001
         },
         "qUpperConfidenceBound": {
-            "beta": 0.001
+            "beta": 0.1
         }
     },
     
