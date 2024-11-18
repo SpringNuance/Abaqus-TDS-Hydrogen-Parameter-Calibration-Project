@@ -165,11 +165,40 @@ def main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
         print_log("=======================================================================", log_path)
         print_log(f"TDS_measurements_iteration_{next_iteration_index}.npy already exists", log_path)
 
+    # Now we combine the iterations of predictions together into TDS_measurements.npy
+    print_log("=======================================================================", log_path)
+    print_log(f"Start concatenating the iterations of predictions together", log_path)
+
+    TDS_measurements = {}
+    predicted_parameters = []
+
+    for index in range(1, next_iteration_index + 1):
+        TDS_measurements_iteration = np.load(f"{results_iter_common_path}/iteration_{index}/TDS_measurements.npy", allow_pickle=True).tolist()
+        TDS_measurements.update(TDS_measurements_iteration)
+        predicted_parameters_iteration = np.load(f"{results_iter_common_path}/iteration_{index}/predicted_parameters.npy", allow_pickle=True).tolist()
+        predicted_parameters += predicted_parameters_iteration
+    
+    np.save(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy", TDS_measurements)
+    np.save(f"{results_iter_common_path}/iteration_common/predicted_parameters.npy", predicted_parameters)
+    
+    num_simulations = len(TDS_measurements)
+    print_log(f"Finish concatenating the iterations of predictions together", log_path)
+    print_log(f"Number of iteration simulations: {num_simulations} TDS measurements", log_path)
+
+    iteration_sim_TDS_measurements = np.load(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy", allow_pickle=True).tolist()
+    predicted_parameters = np.load(f"{results_iter_common_path}/iteration_common/predicted_parameters.npy", allow_pickle=True).tolist()
+    
+    stage6_outputs = {
+        'iteration_sim_TDS_measurements': iteration_sim_TDS_measurements,
+        'predicted_parameters': predicted_parameters
+    }
+    
+    
 if __name__ == "__main__":
     global_configs = main_global_configs()
     stage2_outputs = main_prepare_common_data(global_configs)
     stage3_outputs = main_run_initial_sims(global_configs, stage2_outputs)
     stage4_outputs = main_prepare_sim_data(global_configs, stage2_outputs)
     stage5_outputs = main_train_GP_model(global_configs, stage4_outputs)
-    main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
+    stage6_outputs = main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
                             stage4_outputs, stage5_outputs)

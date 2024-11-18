@@ -84,6 +84,7 @@ class IterationSimFramework():
         if delete_sim:
             self.delete_sim_outputs_iteration(next_iteration_index, index_params_dict)
 
+        
     ##############################
     # ITERATION SIMULATION METHODS #
     ##############################
@@ -195,12 +196,10 @@ class IterationSimFramework():
 
         TDS_measurements_batch = {}
 
-        if os.path.exists(f"{results_iter_data_path}/iteration_{next_iteration_index}"):
-            shutil.rmtree(f"{results_iter_data_path}/iteration_{next_iteration_index}")
-        os.mkdir(f"{results_iter_data_path}/iteration_{next_iteration_index}")
-        if os.path.exists(f"{results_iter_common_path}/iteration_{next_iteration_index}"):
-            shutil.rmtree(f"{results_iter_common_path}/iteration_{next_iteration_index}")
-        os.mkdir(f"{results_iter_common_path}/iteration_{next_iteration_index}")
+        if not os.path.exists(f"{results_iter_data_path}/iteration_{next_iteration_index}"):
+            os.mkdir(f"{results_iter_data_path}/iteration_{next_iteration_index}")
+        if not os.path.exists(f"{results_iter_common_path}/iteration_{next_iteration_index}"):
+            os.mkdir(f"{results_iter_common_path}/iteration_{next_iteration_index}")
 
         for index, params_tuple in index_params_dict.items():
             if not os.path.exists(f"{results_iter_data_path}/iteration_{next_iteration_index}/prediction_{index}"):

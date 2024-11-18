@@ -27,6 +27,11 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
     targets_path = all_paths["targets_path"]
     training_data_path = all_paths["training_data_path"]
     log_path = all_paths["log_path"]
+    models_path = all_paths["models_path"]
+    model_config = global_configs["model_config"]
+    model_name = model_config["model_name"]
+    param_config = global_configs["param_config"]
+
 
     print_log("\n===================================", log_path)
     print_log("= Stage 4: Prepare simulation data =", log_path)
@@ -182,6 +187,14 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
     # FIND THE CURRENT ITERATION INDEX #
     ####################################
 
+    # Ideally, the criterion to define the current iteration index should be the trained model instead of the output data
+    # This is because training the model is the last step of the current iteration before we move to next iteration
+
+    # current_iteration_index = 1
+    # while os.path.exists(f"{models_path}/iteration_{current_iteration_index}/{model_name}"):
+    #     current_iteration_index += 1
+    # current_iteration_index -= 1
+
     current_iteration_index = 1
     while os.path.exists(f"{results_iter_common_path}/iteration_{current_iteration_index}/TDS_measurements.npy"):
         current_iteration_index += 1
@@ -208,7 +221,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
             print_log(f"Loading the iteration TDS measurements", log_path)
             
             # Loading the TDS_measurements.npy
-            iteration_sim_TDS_measurements = np.load(f"{results_init_common_path}/iteration_common/TDS_measurements.npy", allow_pickle=True).tolist()
+            iteration_sim_TDS_measurements = np.load(f"{results_iter_common_path}/iteration_common/TDS_measurements.npy", allow_pickle=True).tolist()
 
             iteration_features_unnormalized = []
 
@@ -256,6 +269,7 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
             combined_features_normalized = np.vstack((initial_features_normalized, iteration_features_normalized))
             combined_features_unnormalized = np.vstack((initial_features_unnormalized, iteration_features_unnormalized))
             combined_labels = np.concatenate((initial_labels, iteration_labels))
+            
             if "surface_H" in param_config.keys():
                 combined_features_normalized_augmented = np.vstack((initial_features_normalized_augmented, iteration_features_normalized))
                 combined_features_unnormalized_augmented = np.vstack((initial_features_unnormalized_augmented, iteration_features_unnormalized))
@@ -271,6 +285,15 @@ def main_prepare_sim_data(global_configs, stage2_outputs):
         np.save(f"{training_data_path}/combined_features_unnormalized_augmented.npy", combined_features_unnormalized_augmented)
         np.save(f"{training_data_path}/combined_labels_augmented.npy", combined_labels_augmented)
 
+    print_log(f"Shape of combined_features_normalized: {combined_features_normalized.shape}", log_path)
+    print_log(f"Shape of combined_features_unnormalized: {combined_features_unnormalized.shape}", log_path)
+    print_log(f"Shape of combined_labels: {combined_labels.shape}", log_path)
+
+    if "surface_H" in param_config.keys():
+        print_log(f"Shape of combined_features_normalized_augmented: {combined_features_normalized_augmented.shape}", log_path)
+        print_log(f"Shape of combined_features_unnormalized_augmented: {combined_features_unnormalized_augmented.shape}", log_path)
+        print_log(f"Shape of combined_labels_augmented: {combined_labels_augmented.shape}", log_path)
+        
     ############################
     # Compiling stage4_outputs #
     ############################

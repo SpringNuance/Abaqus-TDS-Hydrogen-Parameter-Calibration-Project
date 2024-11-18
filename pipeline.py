@@ -131,7 +131,7 @@ def main_pipeline(stage, chosen_project_path):
             stage6_outputs = stage6_run_iteration_sims.main_run_iteration_sims(global_configs, stage2_outputs, stage3_outputs,
                                                                                 stage4_outputs, stage5_outputs)
             stage4_outputs = stage4_prepare_sim_data.main_prepare_sim_data(global_configs, stage2_outputs)
-            stage5_outputs = stage5_train_GP_model.main_train_GP_model(global_configs)
+            stage5_outputs = stage5_train_GP_model.main_train_GP_model(global_configs, stage4_outputs)
 
      
 def parse_args():

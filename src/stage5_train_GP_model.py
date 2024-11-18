@@ -48,7 +48,7 @@ def main_train_GP_model(global_configs, stage4_outputs):
     GP_model_wrapper.train_model()
     
     if current_iteration_index > 0:
-        print_log(f"Previous iterations found. Saving the model to iteration_{index}", log_path)
+        print_log(f"Previous iterations found. Saving the model to iteration_{current_iteration_index}", log_path)
         if not os.path.exists(f"{models_path}/iteration_{current_iteration_index}"):
             os.makedirs(f"{models_path}/iteration_{current_iteration_index}")
         GP_model_wrapper.save_model(f"{models_path}/iteration_{current_iteration_index}/{model_name}")
