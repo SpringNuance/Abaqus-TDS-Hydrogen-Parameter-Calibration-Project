@@ -54,17 +54,17 @@
         "GP_training": {
             "training_log": true,
             "chosen_optimizer": "Adam",
-            "start_learning_rate": 0.0005,
-            "end_learning_rate": 0.0001,
-            "num_epochs": 40000,
-            "weight_decay": 0.01,
-            "logging_every_epoch": 8000
+            "start_learning_rate": 0.001,
+            "end_learning_rate": 0.00001,
+            "num_epochs": 20000,
+            "weight_decay": 0.001,
+            "logging_every_epoch": 4000
             
         }
     },
 
     "optimization_config": {
-        "chosen_acq": "qUpperConfidenceBound",
+        "chosen_acq": "qExpectedImprovement",
         "chosen_sampler": "SobolQMCNormalSampler",
         "sample_shape": 2048,
         "return_best_only": true,
@@ -78,14 +78,14 @@
         },
 
         "qExpectedImprovement": {
-            "eta": 0.001
+            "eta": 0.00001
         },
         "qProbabilityOfImprovement": {
-            "eta": 0.001,
-            "tau": 0.001
+            "eta": 0.00001,
+            "tau": 0.00001
         },
         "qUpperConfidenceBound": {
-            "beta": 0.01
+            "beta": 0.001
         }
     },
     
