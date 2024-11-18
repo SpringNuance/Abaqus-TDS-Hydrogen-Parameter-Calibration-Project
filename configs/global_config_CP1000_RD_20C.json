@@ -85,7 +85,7 @@
             "tau": 0.00001
         },
         "qUpperConfidenceBound": {
-            "beta": 0.1
+            "beta": 0.01
         }
     },
     
@@ -99,8 +99,7 @@
             "lower": 1.0, "upper": 100.0, "replace_prop": "thermal",
             "exponent": 1e-11, "name": "DL", "unit": "m^2/s"
         }
-    }
-    
+    }    
 }
 
 
