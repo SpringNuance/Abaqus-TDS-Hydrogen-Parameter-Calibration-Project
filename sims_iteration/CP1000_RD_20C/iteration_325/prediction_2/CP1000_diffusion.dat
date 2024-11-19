@@ -1,0 +1,166 @@
+1
+
+   Abaqus 2023.HF4                                  Date 19-Nov-2024   Time 12:20:58
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2025
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***WARNING: Line #10527 has been truncated.
+
+ ***WARNING: Line #10530 has been truncated.
+
+ ***WARNING: Line #10531 has been truncated.
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Element, type=C3D8T
+  *Elset, elset=ASSEMBLY_PART-1-1_SET-9
+  *Elset, elset=ASSEMBLY_SET-2
+  *Elset, elset=ASSEMBLY_SET-3
+  *Elset, elset=ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY__SURF-1_S1
+  *Elset, elset=ASSEMBLY__SURF-1_S2
+  *Elset, elset=ASSEMBLY__SURF-1_S4
+  *Elset, elset=ASSEMBLY__SURF-1_S5
+  *Elset, elset=ASSEMBLY__SURF-1_S6
+  *coupledtemperature-displacement, creep=NONE
+  *material, name=MATERIAL-1
+  *density
+  *depvar
+  *usermaterial, constants=24, type=THERMAL
+  *usermaterial, constants=8, type=MECHANICAL
+  *initialconditions, type=TEMPERATURE
+  *solidsection, elset=ASSEMBLY_PART-1-1_SET-9, material=MATERIAL-1
+  *solidsection, elset=ASSEMBLY_PART-1-1_SET-9, material=MATERIAL-1
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *initialconditions, type=TEMPERATURE
+  *boundary, amplitude=AMP-1
+  *boundary, amplitude=AMP-1
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *output, field, timepoints=TDS_MEASUREMENT_TIME
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+  *output, field, timepoints=TDS_MEASUREMENT_TIME
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+  *output, field, timepoints=TDS_MEASUREMENT_TIME
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *timepoints, name=TDS_MEASUREMENT_TIME
+  *Step, name=Step-1, nlgeom=YES, inc=100000
+  *output, field, timepoints=TDS_MEASUREMENT_TIME
+  *output, history, frequency=0
+  *Step, name=Step-1, nlgeom=YES, inc=100000
+  *Step, name=Step-1, nlgeom=YES, inc=100000
+  *coupledtemperature-displacement, creep=NONE
+  *boundary, amplitude=AMP-1
+  *output, field, timepoints=TDS_MEASUREMENT_TIME
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: AN OUTPUT REQUEST AT EXACT TIME POINTS IS NOT SUPPORTED IN AN 
+             ANALYSIS WITH DIRECT INCREMNTATION. IT WILL BE CHANGED TO AN 
+             OUTPUT REQUEST AT APPROXIMATE TIME POINTS.
+  *Step, name=Step-1, nlgeom=YES, inc=100000
+  *coupledtemperature-displacement, creep=NONE
+  *boundary, amplitude=AMP-1
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                  4288
+          NUMBER OF NODES IS                                     5780
+          NUMBER OF NODES DEFINED BY THE USER                    5780
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                23120
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.50    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.60    
+       WALLCLOCK TIME (SEC) =            1
