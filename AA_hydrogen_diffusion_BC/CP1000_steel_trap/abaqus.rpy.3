@@ -1,0 +1,139 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Thu Sep  5 18:21:42 2024
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=90.2552032470703, 
+    height=154.80207824707)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('TDS_charging.cae')
+#: The model database "C:\LocalUserData\User-data\nguyenb5\hydrogen_diffusion_BC\CP1000_steel_trap\TDS_charging.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['CP1000'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['CP1000'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, optimizationTasks=OFF, 
+    geometricRestrictions=OFF, stopConditions=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0281577, 
+    farPlane=0.0464296, width=0.0179275, height=0.00998583, 
+    viewOffsetX=-0.000880346, viewOffsetY=-0.000404283)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.032681, 
+    farPlane=0.0428983, width=0.0208074, height=0.0115899, cameraPosition=(
+    0.00247708, 0.0102872, 0.0370495), cameraUpVector=(-0.0735369, 0.828704, 
+    -0.554835), cameraTarget=(0.00867575, 0.00187003, 0.00125079), 
+    viewOffsetX=-0.00102176, viewOffsetY=-0.000469226)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0270402, 
+    farPlane=0.0476401, width=0.017216, height=0.00958946, cameraPosition=(
+    -0.0183855, 0.019525, 0.0209692), cameraUpVector=(0.484979, 0.658743, 
+    -0.575198), cameraTarget=(0.00823414, 0.00193714, 0.00165902), 
+    viewOffsetX=-0.000845403, viewOffsetY=-0.000388237)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.027601, 
+    farPlane=0.046799, width=0.017573, height=0.00978834, cameraPosition=(
+    -0.0167056, 0.0241561, 0.0180824), cameraUpVector=(0.631692, 0.550079, 
+    -0.54624), cameraTarget=(0.00827376, 0.00181775, 0.00171617), 
+    viewOffsetX=-0.000862936, viewOffsetY=-0.000396289)
+mdb.models['CP1000'].boundaryConditions['diffusion'].suppress()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0269961, 
+    farPlane=0.0467586, width=0.0171879, height=0.00957382, cameraPosition=(
+    0.0342745, 0.0223507, 0.0157332), cameraUpVector=(0.248382, -0.227991, 
+    -0.941449), cameraTarget=(0.00806004, 0.000328952, 0.000945607), 
+    viewOffsetX=-0.000844024, viewOffsetY=-0.000387604)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0258886, 
+    farPlane=0.0478693, width=0.0164828, height=0.00918106, cameraPosition=(
+    0.0443977, 0.00240163, 0.00169143), cameraUpVector=(-0.303477, -0.144505, 
+    -0.941817), cameraTarget=(0.00717429, 0.000287113, 0.000810893), 
+    viewOffsetX=-0.000809399, viewOffsetY=-0.000371703)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0280849, 
+    farPlane=0.0447498, width=0.0178811, height=0.00995998, cameraPosition=(
+    0.0300047, -0.0047723, -0.0273772), cameraUpVector=(-0.94177, -0.166842, 
+    -0.291947), cameraTarget=(0.00695008, 0.000347488, 0.00148636), 
+    viewOffsetX=-0.000878066, viewOffsetY=-0.000403237)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0279645, 
+    farPlane=0.0453777, width=0.0178045, height=0.00991728, cameraPosition=(
+    0.0275772, -0.0193799, -0.0215898), cameraUpVector=(-0.965378, -0.234153, 
+    -0.114968), cameraTarget=(0.00697842, 0.00087505, 0.0019953), 
+    viewOffsetX=-0.000874302, viewOffsetY=-0.000401508)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0284762, 
+    farPlane=0.0441307, width=0.0181303, height=0.0100988, cameraPosition=(
+    0.0266026, 0.004555, -0.0302929), cameraUpVector=(-0.91114, 0.387494, 
+    -0.140257), cameraTarget=(0.00653398, 0.000741302, 0.000908597), 
+    viewOffsetX=-0.0008903, viewOffsetY=-0.000408855)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0293247, 
+    farPlane=0.0426545, width=0.0186705, height=0.0103997, cameraPosition=(
+    0.0159875, 0.029363, -0.0213117), cameraUpVector=(-0.972028, 0.0488843, 
+    0.229723), cameraTarget=(0.00686094, 0.000407328, 0.000347126), 
+    viewOffsetX=-0.000916829, viewOffsetY=-0.000421038)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0292177, 
+    farPlane=0.0423248, width=0.0186025, height=0.0103618, cameraPosition=(
+    -0.000387663, 0.036127, -0.00682856), cameraUpVector=(-0.743464, -0.401899, 
+    0.534545), cameraTarget=(0.00721071, 0.000266008, 3.32713e-05), 
+    viewOffsetX=-0.000913485, viewOffsetY=-0.000419502)
+a = mdb.models['CP1000'].rootAssembly
+s1 = a.instances['Part-1-1'].faces
+side1Faces1 = s1.getSequenceFromMask(mask=('[#fbee ]', ), )
+region = a.Surface(side1Faces=side1Faces1, name='Surf-1')
+mdb.models['CP1000'].SurfaceHeatFlux(name='Load-1', createStepName='Step-1', 
+    region=region, magnitude=0.5)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0284878, 
+    farPlane=0.0430547, width=0.0247142, height=0.0137661, 
+    viewOffsetX=0.000980299, viewOffsetY=-0.000912372)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0228664, 
+    farPlane=0.045992, width=0.0198374, height=0.0110496, cameraPosition=(
+    0.0362817, 0.0142218, 0.0149166), cameraUpVector=(-0.751515, 0.638009, 
+    0.167838), cameraTarget=(0.00518504, 0.00129177, -0.00110352), 
+    viewOffsetX=0.00078686, viewOffsetY=-0.000732336)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.026499, 
+    farPlane=0.0397479, width=0.0229888, height=0.012805, cameraPosition=(
+    0.0186592, -0.00249842, 0.0313651), cameraUpVector=(-0.319628, 0.943276, 
+    -0.0898255), cameraTarget=(0.0061073, 0.00312626, -0.00329968), 
+    viewOffsetX=0.000911864, viewOffsetY=-0.000848678)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0248189, 
+    farPlane=0.0395425, width=0.0215313, height=0.0119931, cameraPosition=(
+    -0.00382624, 0.010531, 0.0294061), cameraUpVector=(0.115331, 0.834178, 
+    -0.539302), cameraTarget=(0.00917222, 0.0017604, -0.00443102), 
+    viewOffsetX=0.00085405, viewOffsetY=-0.000794871)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0250419, 
+    farPlane=0.0393196, width=0.0217248, height=0.0121009, cameraPosition=(
+    -0.0035222, 0.0108151, 0.0294493), cameraUpVector=(0.3574, 0.822104, 
+    -0.443182), cameraTarget=(0.00947626, 0.00204452, -0.00438787), 
+    viewOffsetX=0.000861724, viewOffsetY=-0.000802013)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0207937, 
+    farPlane=0.0424519, width=0.0180394, height=0.0100481, cameraPosition=(
+    -0.0178478, 0.0118636, 0.0166953), cameraUpVector=(0.573955, 0.803019, 
+    -0.160423), cameraTarget=(0.0123605, 0.00186711, -0.00275642), 
+    viewOffsetX=0.000715539, viewOffsetY=-0.000665958)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0265803, 
+    farPlane=0.0377711, width=0.0230596, height=0.0128444, cameraPosition=(
+    0.00260632, 0.022561, 0.0247836), cameraUpVector=(0.239136, 0.53501, 
+    -0.810295), cameraTarget=(0.00793535, -0.00038012, -0.0041326), 
+    viewOffsetX=0.000914665, viewOffsetY=-0.000851286)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0235754, 
+    farPlane=0.0404516, width=0.0204527, height=0.0113923, cameraPosition=(
+    -0.00570432, 0.0217601, 0.0219759), cameraUpVector=(0.347227, 0.557111, 
+    -0.754361), cameraTarget=(0.00938945, -0.000415402, -0.00393283), 
+    viewOffsetX=0.000811261, viewOffsetY=-0.000755047)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0226065, 
+    farPlane=0.0412037, width=0.0196121, height=0.0109241, cameraPosition=(
+    -0.010988, 0.0198935, 0.0194018), cameraUpVector=(0.485812, 0.616346, 
+    -0.619761), cameraTarget=(0.0105321, -4.91164e-05, -0.00362019), 
+    viewOffsetX=0.000777919, viewOffsetY=-0.000724016)
+mdb.models['CP1000'].boundaryConditions['diffusion'].resume()
+mdb.models['CP1000'].loads['Load-1'].suppress()
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\hydrogen_diffusion_BC\CP1000_steel_trap\TDS_charging.cae".

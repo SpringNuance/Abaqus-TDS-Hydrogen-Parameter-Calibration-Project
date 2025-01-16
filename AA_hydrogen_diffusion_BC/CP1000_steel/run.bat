@@ -1,0 +1,1 @@
+(abaqus job=CP1000_diffusion input=CP1000_diffusion.inp user=pure_diffusion cpus=8 verbose=2 output_precision=full interactive)

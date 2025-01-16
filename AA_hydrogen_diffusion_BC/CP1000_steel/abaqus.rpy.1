@@ -1,0 +1,71 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Wed Aug 28 17:00:43 2024
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=90.2552032470703, 
+    height=138.048614501953)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('TDS_charging.cae')
+#: The model database "C:\LocalUserData\User-data\nguyenb5\hydrogen_diffusion_BC\CP1000_steel\TDS_charging.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['SupraPlus_4420'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['SupraPlus_4420'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, optimizationTasks=OFF, 
+    geometricRestrictions=OFF, stopConditions=OFF)
+mdb.models['SupraPlus_4420'].boundaryConditions['diffusion'].setValues(
+    magnitude=0.001)
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\hydrogen_diffusion_BC\CP1000_steel\TDS_charging.cae".
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\hydrogen_diffusion_BC\CP1000_steel\TDS_charging.cae".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.jobs['CP1000_diffusion'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "CP1000_diffusion.inp".
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/hydrogen_diffusion_BC/CP1000_steel/CP1000_diffusion.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/hydrogen_diffusion_BC/CP1000_steel/CP1000_diffusion.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       5
+#: Number of Node Sets:          5
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#* There is no valid step data available on the database. If the analysis is 
+#* running, the database must be closed and reopened once the results have been 
+#* initialized. The requested operation has been cancelled.
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#* rom_Transporter::GetClassBagForRead - Table for class "res_HistoryStep" is 
+#* missing from the database: 
+#* C:/LocalUserData/User-data/nguyenb5/hydrogen_diffusion_BC/CP1000_steel/CP1000_diffusion.odb. 
+#* The database is corrupt.
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#* rom_Transporter::GetClassBagForRead - Table for class "res_HistoryStep" is 
+#* missing from the database: 
+#* C:/LocalUserData/User-data/nguyenb5/hydrogen_diffusion_BC/CP1000_steel/CP1000_diffusion.odb. 
+#* The database is corrupt.

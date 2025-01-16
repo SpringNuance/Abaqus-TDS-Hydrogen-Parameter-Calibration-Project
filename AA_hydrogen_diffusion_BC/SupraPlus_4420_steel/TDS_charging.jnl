@@ -1,0 +1,318 @@
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(initialInc=505.8)
+# Save by nguyenb5 on 2024_08_27-20.14.06; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_27-20.14.29; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].fieldOutputRequests['F-Output-1'].setValues(
+    numIntervals=500, variables=('SDV', ))
+# Save by nguyenb5 on 2024_08_27-20.14.40; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].boundaryConditions['diffusion'].setValues(
+    magnitude=500.0)
+# Save by nguyenb5 on 2024_08_27-20.27.29; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].materials['Material-1'].userMaterial.setValues(
+    thermalConstants=(8.31446261815324, 300.0, 2e-06, 1.4e-15))
+# Save by nguyenb5 on 2024_08_27-20.54.14; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_27-20.55.00; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['CP1000'].rootAssembly.Set(cells=
+    mdb.models['CP1000'].rootAssembly.instances['Part-1-1'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), edges=
+    mdb.models['CP1000'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    ('[#fff ]', ), ), faces=
+    mdb.models['CP1000'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#3f ]', ), ), name='Set-1', vertices=
+    mdb.models['CP1000'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    ('[#ff ]', ), ))
+mdb.models['CP1000'].Temperature(createStepName='Initial', 
+    crossSectionDistribution=CONSTANT_THROUGH_THICKNESS, distributionType=
+    UNIFORM, magnitudes=(0.0, ), name='Predefined Field-1', region=
+    mdb.models['CP1000'].rootAssembly.sets['Set-1'])
+mdb.models['SupraPlus_4420'].rootAssembly.Set(cells=
+    mdb.models['SupraPlus_4420'].rootAssembly.instances['Part-1-1'].cells.getSequenceFromMask(
+    ('[#7 ]', ), ), edges=
+    mdb.models['SupraPlus_4420'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    ('[#fffffff ]', ), ), faces=
+    mdb.models['SupraPlus_4420'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#ffff ]', ), ), name='Set-2', vertices=
+    mdb.models['SupraPlus_4420'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    ('[#bfff ]', ), ))
+mdb.models['SupraPlus_4420'].Temperature(createStepName='Initial', 
+    crossSectionDistribution=CONSTANT_THROUGH_THICKNESS, distributionType=
+    UNIFORM, magnitudes=(0.0, ), name='Predefined Field-1', region=
+    mdb.models['SupraPlus_4420'].rootAssembly.sets['Set-2'])
+# Save by nguyenb5 on 2024_08_27-21.04.43; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D8T, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6T, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4T, elemLibrary=STANDARD)), regions=(
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0001)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh(regions=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ))
+# Save by nguyenb5 on 2024_08_27-21.13.15; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_27-21.13.29; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+# Save by nguyenb5 on 2024_08_27-21.15.29; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.000225)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+# Save by nguyenb5 on 2024_08_28-11.16.36; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+# Save by nguyenb5 on 2024_08_28-11.37.17; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_28-11.45.58; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh(regions=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ))
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedEdgeBySize(constraint=FINER, 
+    deviationFactor=0.1, edges=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].edges.getSequenceFromMask((
+    '[#458110a ]', ), ), minSizeFactor=0.1, size=0.0009)
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedEdgeBySize(constraint=FINER, 
+    deviationFactor=0.1, edges=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].edges.getSequenceFromMask((
+    '[#458110a ]', ), ), minSizeFactor=0.1, size=0.0001)
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedEdgeByNumber(constraint=FINER, 
+    edges=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].edges.getSequenceFromMask((
+    '[#900a425 ]', ), ), number=100)
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedEdgeBySize(constraint=FINER, 
+    deviationFactor=0.1, edges=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].edges.getSequenceFromMask((
+    '[#fffffff ]', ), ), minSizeFactor=0.1, size=0.0001)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+# Save by nguyenb5 on 2024_08_28-12.25.53; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_28-12.26.34; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+mdb.models['SupraPlus_4420'].boundaryConditions['diffusion'].setValues(
+    magnitude=2000.0)
+# Save by nguyenb5 on 2024_08_28-12.26.48; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(initialInc=2592.0)
+# Save by nguyenb5 on 2024_08_28-12.33.02; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].fieldOutputRequests['F-Output-1'].setValues(
+    numIntervals=100)
+# Save by nguyenb5 on 2024_08_28-12.33.14; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh(regions=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ))
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedEdgeBySize(constraint=FINER, 
+    deviationFactor=0.1, edges=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].edges.getSequenceFromMask((
+    '[#fffffff ]', ), ), minSizeFactor=0.1, size=0.000225)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+# Save by nguyenb5 on 2024_08_28-12.49.27; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['CP1000']
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+# Save by nguyenb5 on 2024_08_28-12.49.47; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(initialInc=1296.0)
+# Save by nguyenb5 on 2024_08_28-12.50.57; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_28-12.56.35; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702

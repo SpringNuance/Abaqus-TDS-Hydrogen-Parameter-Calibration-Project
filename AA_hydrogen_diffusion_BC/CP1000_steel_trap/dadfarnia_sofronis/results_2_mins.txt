@@ -1,0 +1,9 @@
+
+                                                                                                              AVERAGE_SDV_AR6_CT_DIS_  AVERAGE_SDV_AR7_CT_GB_M  AVERAGE_SDV_AR8_CT_CARB                           AVERAGE_SDV_AR11_THETAT  AVERAGE_SDV_AR12_THETAT  AVERAGE_SDV_AR13_THETAT                                                                                                                             
+                     X              AVERAGE_SDV_AR3_C_MOL    AVERAGE_SDV_AR4_CL_MOL   AVERAGE_SDV_AR5_CT_MOL            MOL                       OL                      _MOL           AVERAGE_SDV_AR10_THETAL            _DIS                     _GB                     _CARB                AVERAGE_UVARM1           AVERAGE_UVARM2           AVERAGE_UVARM3           AVERAGE_UVARM4           AVERAGE_UVARM5    
+
+                 120.                       5.43810701               4.52140713             915.651672E-03            22.884861E-03           140.585007E-03           752.216309E-03             5.32919693E-06          17.10429E-03            999.999634E-03           535.318604E-06           693.843445E-03           576.934326E-03           116.850189E-03             2.91979527E-03          17.9380665E-03 
+
+
+
+

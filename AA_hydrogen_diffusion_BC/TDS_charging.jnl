@@ -1,0 +1,351 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=0.2)
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(0.015, 0.0045))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=0.0009, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Density(table=((1.0, ), ))
+mdb.models['Model-1'].materials['Material-1'].Conductivity(table=((1.0, ), ))
+mdb.models['Model-1'].materials['Material-1'].conductivity.setValues(table=((
+    3.8e-05, ), ))
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((200000.0, 0.3), 
+    ))
+mdb.models['Model-1'].materials['Material-1'].SpecificHeat(table=((1.0, ), ))
+mdb.models['Model-1'].CoupledTempDisplacementStep(cetol=None, creepIntegration=
+    None, deltmx=None, initialInc=50.0, maxNumInc=100000, name='Step-1', 
+    nlgeom=ON, previous='Initial', timeIncrementationMethod=FIXED, timePeriod=
+    259200.0)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].steps['Step-1'].setValues(creepIntegration=None)
+mdb.models.changeKey(fromName='Model-1', toName='SupraPlus_4420')
+mdb.Model(name='CP1000', objectToCopy=mdb.models['SupraPlus_4420'])
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(creepIntegration=None)
+mdb.models['SupraPlus_4420'].TabularAmplitude(data=((0.0, 1.0), (2529200.0, 
+    1.0)), name='Amp-1', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['SupraPlus_4420'].amplitudes['Amp-1'].setValues(data=((0.0, 1.0), (
+    259200.0, 1.0)), smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['SupraPlus_4420'].ConstrainedSketch(gridSpacing=0.0002, name=
+    '__profile__', sheetSize=0.0091, transform=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].MakeSketchTransform(
+    sketchPlane=mdb.models['SupraPlus_4420'].parts['Part-1'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['SupraPlus_4420'].parts['Part-1'].edges[0], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.00225, 0.00045)))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=4)
+mdb.models['SupraPlus_4420'].parts['Part-1'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CircleByCenterPerimeter(
+    center=(0.0, 0.0), point1=(0.00045, 0.0))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[2])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[0], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[1], midpoint=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[5])
+mdb.models['SupraPlus_4420'].parts['Part-1'].PartitionFaceBySketch(faces=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].faces.getSequenceFromMask((
+    '[#1 ]', ), ), sketch=mdb.models['SupraPlus_4420'].sketches['__profile__'], 
+    sketchUpEdge=mdb.models['SupraPlus_4420'].parts['Part-1'].edges[0])
+del mdb.models['SupraPlus_4420'].sketches['__profile__']
+del mdb.models['SupraPlus_4420'].parts['Part-1'].features['Partition face-1']
+mdb.models['SupraPlus_4420'].ConstrainedSketch(gridSpacing=0.0002, name=
+    '__profile__', sheetSize=0.0091, transform=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].MakeSketchTransform(
+    sketchPlane=mdb.models['SupraPlus_4420'].parts['Part-1'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['SupraPlus_4420'].parts['Part-1'].edges[0], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.00225, 0.00045)))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=4)
+mdb.models['SupraPlus_4420'].parts['Part-1'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].Line(point1=(0.0, 0.0), 
+    point2=(0.00045, 0.00045))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[2])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].Line(point1=(0.00045, 
+    0.00045), point2=(-0.000449999967031181, 0.00045))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[7])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[5])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].undo()
+mdb.models['SupraPlus_4420'].sketches['__profile__'].rectangle(point1=(0.00045, 
+    -0.00045), point2=(-0.00045, 0.00045))
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[2])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].vertices[7], entity2=
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[5])
+mdb.models['SupraPlus_4420'].sketches['__profile__'].delete(objectList=(
+    mdb.models['SupraPlus_4420'].sketches['__profile__'].geometry[6], ))
+mdb.models['SupraPlus_4420'].parts['Part-1'].PartitionFaceBySketch(faces=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].faces.getSequenceFromMask((
+    '[#1 ]', ), ), sketch=mdb.models['SupraPlus_4420'].sketches['__profile__'], 
+    sketchUpEdge=mdb.models['SupraPlus_4420'].parts['Part-1'].edges[0])
+del mdb.models['SupraPlus_4420'].sketches['__profile__']
+mdb.models['SupraPlus_4420'].parts['Part-1'].DatumPlaneByOffset(flip=SIDE2, 
+    offset=0.00045, plane=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].faces[3])
+mdb.models['SupraPlus_4420'].parts['Part-1'].features['Datum plane-1'].setValues(
+    offset=0.0018)
+mdb.models['SupraPlus_4420'].parts['Part-1'].regenerate()
+mdb.models['SupraPlus_4420'].parts['Part-1'].regenerate()
+mdb.models['SupraPlus_4420'].parts['Part-1'].DatumPlaneByOffset(flip=SIDE2, 
+    offset=0.0018, plane=mdb.models['SupraPlus_4420'].parts['Part-1'].faces[5])
+mdb.models['SupraPlus_4420'].parts['Part-1'].PartitionCellByDatumPlane(cells=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), datumPlane=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].datums[4])
+mdb.models['SupraPlus_4420'].parts['Part-1'].PartitionCellByDatumPlane(cells=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), datumPlane=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].datums[5])
+mdb.models['SupraPlus_4420'].parts['Part-1'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D8, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+# Save by nguyenb5 on 2024_08_27-18.04.42; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_27-18.04.44; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D8T, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6T, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4T, elemLibrary=STANDARD)), regions=(
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), ))
+# Save by nguyenb5 on 2024_08_27-18.05.01; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0001)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0003)
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.00015)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].deleteMesh()
+mdb.models['SupraPlus_4420'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.000225)
+mdb.models['SupraPlus_4420'].parts['Part-1'].generateMesh()
+# Save by nguyenb5 on 2024_08_27-18.09.16; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+mdb.models['SupraPlus_4420'].rootAssembly.Set(faces=
+    mdb.models['SupraPlus_4420'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#fbee ]', ), ), name='Set-1')
+mdb.models['SupraPlus_4420'].TemperatureBC(amplitude=UNSET, createStepName=
+    'Step-1', distributionType=UNIFORM, fieldName='', fixed=OFF, magnitude=0.5, 
+    name='diffusion', region=
+    mdb.models['SupraPlus_4420'].rootAssembly.sets['Set-1'])
+# Save by nguyenb5 on 2024_08_27-18.11.12; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].boundaryConditions['diffusion'].setValues(
+    amplitude='Amp-1')
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(creepIntegration=None)
+# Save by nguyenb5 on 2024_08_27-18.12.32; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].fieldOutputRequests['F-Output-1'].setValues(
+    numIntervals=200, variables=('NT', ))
+# Save by nguyenb5 on 2024_08_27-18.16.22; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['SupraPlus_4420'].historyOutputRequests['H-Output-1']
+# Save by nguyenb5 on 2024_08_27-18.17.54; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['SupraPlus_4420'].materials['Material-1'].conductivity
+del mdb.models['SupraPlus_4420'].materials['Material-1'].density
+del mdb.models['SupraPlus_4420'].materials['Material-1'].elastic
+mdb.models['SupraPlus_4420'].materials['Material-1'].UserMaterial(
+    mechanicalConstants=(200000000000.0, 0.3), thermalConstants=(
+    8.31446261815324, 300.0, 2e-06, 3.8e-11), type=THERMOMECHANICAL)
+mdb.models['SupraPlus_4420'].materials['Material-1'].Depvar(n=1)
+# Save by nguyenb5 on 2024_08_27-18.27.29; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['SupraPlus_4420'].materials['Material-1'].specificHeat
+mdb.models['SupraPlus_4420'].materials['Material-1'].Density(table=((1.0, ), ))
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(creepIntegration=None)
+mdb.models['SupraPlus_4420'].steps['Step-1'].setValues(creepIntegration=None)
+# Save by nguyenb5 on 2024_08_27-18.30.34; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='SupraPlus_4420', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='SupraPlus_4420_diffusion', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=
+    1, queue=None, resultsFormat=ODB, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['SupraPlus_4420'].HomogeneousSolidSection(material='Material-1', 
+    name='Section-1', thickness=None)
+mdb.models['SupraPlus_4420'].parts['Part-1'].Set(cells=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), name='Set-3')
+mdb.models['SupraPlus_4420'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['SupraPlus_4420'].parts['Part-1'].sets['Set-3'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['SupraPlus_4420'].materials['Material-1'].depvar.setValues(n=2)
+# Save by nguyenb5 on 2024_08_27-19.52.53; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['SupraPlus_4420'].rootAssembly.regenerate()
+mdb.models['SupraPlus_4420'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('SDV', ))
+# Save by nguyenb5 on 2024_08_27-20.02.01; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2024_08_27-20.02.11; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
