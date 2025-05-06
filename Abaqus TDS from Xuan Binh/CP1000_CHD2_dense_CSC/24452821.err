@@ -1,0 +1,1176 @@
+ 
+Abaqus 2023  is now in use 
+ 
+NOTICE.  Abaqus licenses used on CSC's servers are only for 
+students and personnel from Finnish universities and polytechnics. 
+ 
+
+Lmod is automatically replacing "gcc/11.3.0" with
+"intel-oneapi-compilers/2022.1.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) intel-oneapi-mkl/2022.1.0     2) openmpi/4.1.4
+
+Checkout succeeded: standard/83BC504A2998
+	License file: 1761@license1.csc.fi
+	No server used
+FLEXnet Licensing checkout error: In the queue for this feature.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-35,146
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 0 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 30 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 60 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 90 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 120 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 150 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 180 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 210 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 240 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 270 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 300 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 330 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 360 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 390 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 420 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 450 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 480 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 510 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 540 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 570 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 600 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 630 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 660 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 690 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 720 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 750 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 780 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 810 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 840 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 870 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 900 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 930 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 960 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 990 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1020 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1050 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1080 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1110 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1140 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1170 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1200 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1230 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1260 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1290 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1320 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1350 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1380 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1410 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1440 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1470 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1500 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1530 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1560 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1590 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1620 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1650 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1680 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1710 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1740 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1770 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1800 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1830 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1860 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 1890 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1920 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1950 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 1980 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2010 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2040 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2070 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2100 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2130 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2160 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2190 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2220 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2250 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2280 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2310 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2340 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2370 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2400 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2430 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2460 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2490 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2520 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2550 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2580 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2610 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2640 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2670 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2700 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2730 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2760 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2790 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 2820 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2850 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2880 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2910 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2940 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 2970 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3000 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3030 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3060 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3090 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3120 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3150 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3180 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3210 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3240 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3270 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3300 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3330 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3360 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3390 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3420 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3450 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3480 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3510 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3540 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3570 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3600 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3630 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3660 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3690 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3720 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 3750 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3780 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3810 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3840 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3870 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3902 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3932 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3962 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 3992 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4022 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4052 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4082 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4112 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4142 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4172 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4202 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4232 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4262 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4292 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4322 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4352 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4382 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4412 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4442 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4472 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4502 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4532 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4562 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4592 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4622 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 4654 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4684 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4714 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4744 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4774 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4804 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4834 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4864 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4894 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4924 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4954 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 4984 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5014 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5044 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5074 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5104 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5134 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5164 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5194 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5224 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5254 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5284 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5314 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5344 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5374 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5404 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5434 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5464 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5494 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5524 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 5554 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5584 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5614 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5644 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5674 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5704 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5734 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5764 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5794 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5824 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5854 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5884 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5914 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5944 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 5974 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6004 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6034 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6064 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6094 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6124 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6154 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6184 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6214 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6244 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6274 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6304 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6334 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6364 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6394 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6424 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6454 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 6484 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6514 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6544 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6574 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6604 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6634 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6664 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6694 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6724 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6754 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6784 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6814 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6844 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6874 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6904 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6934 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6964 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 6994 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7024 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7054 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7084 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7114 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7144 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7174 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7204 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7234 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7264 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7294 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7324 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7354 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7384 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 7414 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7444 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7474 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7504 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7534 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7564 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7594 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7624 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7654 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7684 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7714 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7744 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7774 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7804 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7834 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7864 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7894 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7924 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7954 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 7984 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8014 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8044 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8074 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8104 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8134 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8164 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8194 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8224 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8254 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8284 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8314 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 8344 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8374 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8404 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8434 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8464 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8494 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8524 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8554 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8584 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8614 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8644 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8674 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8704 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8734 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8764 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8794 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8824 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8854 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8884 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8914 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8944 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 8974 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9004 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9034 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9064 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9094 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9124 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9154 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9184 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9214 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9244 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 9276 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9306 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9336 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9366 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9396 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9426 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9456 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9486 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9516 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9546 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9576 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9606 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9636 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9666 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9696 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9726 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9756 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9786 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9816 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9846 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9876 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9906 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9936 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9966 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 9996 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10026 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10056 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10086 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10116 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10146 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 10176 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10206 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10236 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10266 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10296 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10326 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10356 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10386 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10416 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10446 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10476 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10506 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10536 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10566 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10596 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10626 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10656 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10686 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10716 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10746 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10776 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10806 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10836 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10866 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10896 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10926 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10956 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 10986 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11016 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11046 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11076 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 11107 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11137 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11167 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11197 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11227 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11257 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11287 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11317 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11347 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11377 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11407 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11437 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11467 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11497 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11527 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11557 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11587 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11617 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11647 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11677 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11707 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11737 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11767 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11797 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11827 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11857 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11887 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11917 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11947 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 11977 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 12007 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12037 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12067 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12097 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12127 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12157 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12187 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12217 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12247 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12277 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12307 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12337 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12367 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12397 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12427 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12457 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12487 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12517 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12547 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12577 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12607 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12637 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12667 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12697 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12727 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12757 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12787 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12817 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12847 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12877 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12907 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 12937 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12967 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 12997 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13027 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13057 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13087 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13117 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13147 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13177 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13207 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13237 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13267 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13297 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13327 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13357 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13387 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13417 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13447 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13477 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13507 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13537 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13567 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13597 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13627 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13657 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13687 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13717 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13747 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13777 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13807 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13837 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 13869 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13899 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13929 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13959 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 13989 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14019 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14049 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14079 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14109 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14139 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14169 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14199 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14229 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14259 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14289 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14319 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14349 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14379 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14409 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14439 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14469 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14499 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14529 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14559 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14589 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14619 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14649 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14679 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14709 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14739 seconds.
+FLEXnet Licensing checkout error: Licensed number of users already reached.
+Feature:       standard
+License path:  1761@license1.csc.fi:
+FLEXnet Licensing error:-4,132
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.acresso.com".
+license file(s):  1761@license1.csc.fi
+"standard" license request queued for the License Server. 
+Total time in queue: 14769 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14799 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14829 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14859 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14889 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14919 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14949 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 14979 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15009 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15039 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15069 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15099 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15129 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15159 seconds.
+"standard" license request queued for the License Server. 
+Total time in queue: 15189 seconds.
+Checkout succeeded: standard/83BC504A2998
+	License file: 1761@license1.csc.fi
+	No server used
+Checkout succeeded: parallel/7F239B22E8AA
+	License file: 1761@license1.csc.fi
+	License Server: 1761@license1.csc.fi
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 12 tokens from Flexnet server license1.csc.fi.
+<2 out of 600 licenses remain available>.
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0 Build 20220226_000000
+Copyright (C) 1985-2022 Intel Corporation.  All rights reserved.
+
+ifort: command line warning #10434: option '-extend_source' use with underscore is deprecated; use '-extend-source' instead
+/scratch/project_2008630/AA_Binh_Master_Thesis/CP1000_fit1/CHD2_denser_mesh/helper_functions.f90(105): remark #15009: calc_matrix_log_ has been targeted for automatic cpu dispatch
+/scratch/project_2008630/AA_Binh_Master_Thesis/CP1000_fit1/CHD2_denser_mesh/helper_functions.f90(161): remark #15009: calc_matrix_sqrt_ has been targeted for automatic cpu dispatch
+/scratch/project_2008630/AA_Binh_Master_Thesis/CP1000_fit1/CHD2_denser_mesh/helper_functions.f90(209): remark #15009: calc_matrix_inv_ has been targeted for automatic cpu dispatch
+/scratch/project_2008630/AA_Binh_Master_Thesis/CP1000_fit1/CHD2_denser_mesh/helper_functions.f90(240): remark #15009: calc_max_principal_stress_ has been targeted for automatic cpu dispatch
+/scratch/project_2008630/AA_Binh_Master_Thesis/CP1000_fit1/CHD2_denser_mesh/helper_functions.f90(284): remark #15009: sort_descending_ has been targeted for automatic cpu dispatch
+deformation_diffusion.f90(428): remark #15009: uexternaldb_ has been targeted for automatic cpu dispatch
+deformation_diffusion.f90(926): remark #15009: umat_ has been targeted for automatic cpu dispatch
+deformation_diffusion.f90(819): remark #15009: calc_sig_h_grad_all_elems_at_inpts_ has been targeted for automatic cpu dispatch
+deformation_diffusion.f90(1259): remark #15009: umatht_ has been targeted for automatic cpu dispatch
+deformation_diffusion.f90(1563): remark #15009: uvarm_ has been targeted for automatic cpu dispatch
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.6.0 Build 20220226_000000
+Copyright (C) 1985-2022 Intel Corporation.  All rights reserved.
+

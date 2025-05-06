@@ -1,0 +1,51 @@
+<Description>
+   ABAQUS/standard rank 0 encountered a SEGMENTATION FAULT
+
+</Description>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   std | Exec
+</Phase>
+
+<Callstack>
+  1)  standardU.dll               uexternaldb                             
+  2)  ABQSMAStaCore.dll           step                                    
+  3)  ABQSMAStaCore.dll           exec                                    
+  4)  ABQSMAStaCore.dll           std_main                                
+  5)  standard.exe              unknown                                 
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>              2 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          5 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          31 GB </Size>
+       <Used>          19 GB </Used>
+       <Free>          11 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_CHD2_with_HE_aravas_processed_14640 </current> <free>     13 GB </free>   <used>    461 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\CP1000 plastic (UMAT UMATHT)\CP1000_CHD2_with_HE_aravas </indir>   <free>     13 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\CP1000 plastic (UMAT UMATHT)\CP1000_CHD2_with_HE_aravas </outdir>  <free>     13 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_CHD2_with_HE_aravas_processed_14640 </tmpdir>  <free>     13 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     13 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_CHD2_with_HE_aravas_processed_14640\standard.exe </Executable>
+</Installation>
+
